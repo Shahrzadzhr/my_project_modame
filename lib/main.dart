@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
 
+import 'package:my_project_modame/Screens/login_screen.dart';  // Importiere die LoginScreen-Datei
+import 'package:my_project_modame/Screens/welcome_screen.dart';  // Importiere die WelcomeScreen-Datei
+
 
 void main() {
-  runApp(const MainApp());
+  runApp(MyApp());
 }
 
-class MainApp extends StatelessWidget {
-const MainApp({super.key});
-
-@override
-Widget build (BuildContext context) {
-return const MaterialApp(
-home: Scaffold( 
-  body: Center(
-     child: Text('Hello World!'),
-    ), 
-   ),
-  );// Center ), // Scaffold ); // MaterialApp
- }
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Navigation Example',
+      initialRoute: '/',
+      routes: {
+        '/': (context) => WelcomeScreen(),
+        '/login': (context) => LoginScreen(),
+      },
+    );
+  }
 }
