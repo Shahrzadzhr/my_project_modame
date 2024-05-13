@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class LoginScreen extends StatelessWidget {
    LoginScreen({super.key});
 
-  // This state should ideally be in a StatefulWidget or managed via a state management solution in real applications
+  
   final ValueNotifier<bool> _rememberMe = ValueNotifier(false);
 
   @override
@@ -53,7 +53,7 @@ class LoginScreen extends StatelessWidget {
               ),
             ),
 
-            // Positioned login form
+            
             Positioned(
               top: 488,
               left: 35,
@@ -61,18 +61,18 @@ class LoginScreen extends StatelessWidget {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    // Username or email input
+                    
                     buildTextInput("Username, email or mobile number", false),
                     SizedBox(height: 14),
-                    // Password input
+                    
                     buildTextInput("Password", true),
 
                     SizedBox(height: 20),
-                    // Login button
+                    
                     buildLoginButton(),
 
                     SizedBox(height: 8),
-                    // Remember me and Forgot password
+                    
                     buildRememberMe(),
 
                     Container(
