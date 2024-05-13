@@ -120,7 +120,7 @@ class PersonalAccount extends StatelessWidget {
                       IconButton(
                         icon: const Icon(Icons.edit, color: Color.fromARGB(255, 136, 29, 29)),
                         onPressed: () {
-                          // Logic to edit the phone number
+                          
                         },
                       )
                     ],
@@ -169,7 +169,7 @@ class PersonalAccount extends StatelessWidget {
                       IconButton(
                         icon: const Icon(Icons.keyboard_arrow_right, color: Color.fromARGB(255, 136, 29, 29)),
                         onPressed: () {
-                          // Action for selecting date
+                          
                         },
                       )
                     ],
@@ -217,7 +217,7 @@ class PersonalAccount extends StatelessWidget {
                       IconButton(
                         icon: const Icon(Icons.keyboard_arrow_right, color: Color.fromARGB(255, 136, 29, 29)),
                         onPressed: () {
-                          // Action for preferred content
+                          
                         },
                       )
                     ],
@@ -317,7 +317,7 @@ class PersonalAccount extends StatelessWidget {
             child: IconButton(
               icon: const Icon(Icons.delete, color: Color.fromARGB(255, 130, 25, 17)),
               onPressed: () {
-                // Logic to delete the profile
+                
               },
             ),
           ),
@@ -354,31 +354,31 @@ class PersonalAccount extends StatelessWidget {
                   IconButton(
                     icon: const Icon(Icons.home, color: Color.fromARGB(255, 130, 25, 17)),
                     onPressed: () {
-                      // Action for home button
+                      
                     },
                   ),
                   IconButton(
                     icon: const Icon(Icons.visibility, color: Color.fromARGB(255, 130, 25, 17)),
                     onPressed: () {
-                      // Action for visibility button
+                      
                     },
                   ),
                   IconButton(
                     icon: const Icon(Icons.search, color: Color.fromARGB(255, 130, 25, 17)),
                     onPressed: () {
-                      // Action for search button
+                      
                     },
                   ),
                   IconButton(
                     icon: const Icon(Icons.favorite, color: Color.fromARGB(255, 130, 25, 17)),
                     onPressed: () {
-                      // Action for favorite button
+                      
                     },
                   ),
                   IconButton(
                     icon: const Icon(Icons.person, color: Color.fromARGB(255, 130, 25, 17)),
                     onPressed: () {
-                      // Action for profile button
+                      
                     },
                   ),
                 ],
