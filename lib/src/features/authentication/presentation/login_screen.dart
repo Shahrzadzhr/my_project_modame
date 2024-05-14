@@ -1,10 +1,8 @@
-
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
-   LoginScreen({super.key});
+  LoginScreen({super.key});
 
-  
   final ValueNotifier<bool> _rememberMe = ValueNotifier(false);
 
   @override
@@ -17,7 +15,8 @@ class LoginScreen extends StatelessWidget {
             SizedBox.expand(
               child: Opacity(
                 opacity: 0.9,
-                child: Image.asset("assets/backgroundimage.jpg", fit: BoxFit.cover),
+                child: Image.asset("assets/backgroundimage.jpg",
+                    fit: BoxFit.cover),
               ),
             ),
             Positioned(
@@ -44,7 +43,7 @@ class LoginScreen extends StatelessWidget {
                   height: 140,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(35.0),
-                    image: DecorationImage(
+                    image: const DecorationImage(
                       image: AssetImage("assets/logo.png"),
                       fit: BoxFit.cover,
                     ),
@@ -53,7 +52,6 @@ class LoginScreen extends StatelessWidget {
               ),
             ),
 
-            
             Positioned(
               top: 488,
               left: 35,
@@ -61,26 +59,19 @@ class LoginScreen extends StatelessWidget {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    
-                    buildTextInput("Username, email or mobile number", false),
+                    buildTextInput(
+                        "   Username, email or mobile number", false),
                     SizedBox(height: 14),
-                    
-                    buildTextInput("Password", true),
-
+                    buildTextInput("   Password", true),
                     SizedBox(height: 20),
-                    
                     buildLoginButton(),
-
                     SizedBox(height: 8),
-                    
                     buildRememberMe(),
-
                     Container(
-                       width: 178,
+                      width: 178,
                       height: 1,
                       decoration: BoxDecoration(color: Colors.white),
                     ),
-
                     const Text(
                       'Forgot password?',
                       style: TextStyle(
@@ -163,12 +154,12 @@ class LoginScreen extends StatelessWidget {
               onChanged: (newValue) {
                 _rememberMe.value = newValue ?? false;
               },
-              checkColor: Color.fromARGB(255, 161, 29, 29), // color of tick Mark
+              checkColor:
+                  Color.fromARGB(255, 161, 29, 29), // color of tick Mark
               activeColor: const Color.fromARGB(255, 255, 255, 255),
             );
           },
         ),
-        
         const Text(
           'Remember me',
           style: TextStyle(

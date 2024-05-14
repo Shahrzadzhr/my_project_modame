@@ -1,16 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:my_project_modame/src/data/database_repository.dart';
 
 class PersonalAccount extends StatelessWidget {
-  const PersonalAccount({Key? key}) : super(key: key);
+  // Attribute
+  final DatabaseRepository databaseRepository;
 
+  // Konstruktor
+  const PersonalAccount({super.key, required this.databaseRepository});
+
+  // Methoden
   @override
   Widget build(BuildContext context) {
+    // get currently logged in user from database
+    final loggedInUser = databaseRepository.getUser("2")!;
+
     return Scaffold(
       body: Stack(
         children: [
           Container(
-            width: 393,
-            height: 851,
+            width: double.infinity,
+            height: double.infinity,
             decoration: const BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment(-0.00, -1.00),
@@ -23,7 +32,6 @@ class PersonalAccount extends StatelessWidget {
               borderRadius: BorderRadius.all(Radius.circular(31)),
             ),
           ),
-
           Positioned(
             top: 32,
             left: 8,
@@ -33,7 +41,6 @@ class PersonalAccount extends StatelessWidget {
               onPressed: () => Navigator.pop(context),
             ),
           ),
-
           Positioned(
             top: 62,
             left: 150,
@@ -42,8 +49,8 @@ class PersonalAccount extends StatelessWidget {
               width: 93,
               height: 89,
               decoration: BoxDecoration(
-                image: const DecorationImage(
-                  image: AssetImage('assets/Christina Hendricks.jpg'),
+                image: DecorationImage(
+                  image: NetworkImage(loggedInUser.profilePicUrl),
                   fit: BoxFit.fill,
                 ),
                 borderRadius: BorderRadius.circular(43.54),
@@ -51,7 +58,6 @@ class PersonalAccount extends StatelessWidget {
               ),
             ),
           ),
-
           Positioned(
             top: 162,
             left: 100,
@@ -62,16 +68,15 @@ class PersonalAccount extends StatelessWidget {
               color: const Color(0xFFECAAA5),
             ),
           ),
-
           Positioned(
             top: 165,
             left: 16,
             right: 16,
             child: Container(
               alignment: Alignment.center,
-              child: const Text(
-                'Christina Hendricks',
-                style: TextStyle(
+              child: Text(
+                "${loggedInUser.vorname} ${loggedInUser.nachname}",
+                style: const TextStyle(
                   color: Color(0xFF500004),
                   fontSize: 13,
                   fontFamily: 'SF Pro',
@@ -80,7 +85,6 @@ class PersonalAccount extends StatelessWidget {
               ),
             ),
           ),
-
           Positioned(
             top: 213,
             left: 24,
@@ -109,7 +113,7 @@ class PersonalAccount extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        '0176-202-56...',
+                        loggedInUser.phonenumber,
                         style: TextStyle(
                           color: Colors.black.withOpacity(0.7),
                           fontSize: 13,
@@ -118,10 +122,9 @@ class PersonalAccount extends StatelessWidget {
                         ),
                       ),
                       IconButton(
-                        icon: const Icon(Icons.edit, color: Color.fromARGB(255, 136, 29, 29)),
-                        onPressed: () {
-                          
-                        },
+                        icon: const Icon(Icons.edit,
+                            color: Color.fromARGB(255, 136, 29, 29)),
+                        onPressed: () {},
                       )
                     ],
                   ),
@@ -129,7 +132,6 @@ class PersonalAccount extends StatelessWidget {
               ],
             ),
           ),
-
           Positioned(
             top: 323,
             left: 24,
@@ -158,19 +160,19 @@ class PersonalAccount extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Tap to select date',
+                        loggedInUser.birthdate,
                         style: TextStyle(
-                          color: Color.fromARGB(255, 79, 79, 79).withOpacity(0.7),
+                          color: const Color.fromARGB(255, 79, 79, 79)
+                              .withOpacity(0.7),
                           fontSize: 13,
                           fontFamily: 'SF Pro',
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       IconButton(
-                        icon: const Icon(Icons.keyboard_arrow_right, color: Color.fromARGB(255, 136, 29, 29)),
-                        onPressed: () {
-                          
-                        },
+                        icon: const Icon(Icons.keyboard_arrow_right,
+                            color: Color.fromARGB(255, 136, 29, 29)),
+                        onPressed: () {},
                       )
                     ],
                   ),
@@ -178,7 +180,6 @@ class PersonalAccount extends StatelessWidget {
               ],
             ),
           ),
-
           Positioned(
             top: 429,
             left: 24,
@@ -215,10 +216,9 @@ class PersonalAccount extends StatelessWidget {
                         ),
                       ),
                       IconButton(
-                        icon: const Icon(Icons.keyboard_arrow_right, color: Color.fromARGB(255, 136, 29, 29)),
-                        onPressed: () {
-                          
-                        },
+                        icon: const Icon(Icons.keyboard_arrow_right,
+                            color: Color.fromARGB(255, 136, 29, 29)),
+                        onPressed: () {},
                       )
                     ],
                   ),
@@ -226,7 +226,6 @@ class PersonalAccount extends StatelessWidget {
               ],
             ),
           ),
-
           Positioned(
             bottom: 244,
             left: 10,
@@ -257,7 +256,6 @@ class PersonalAccount extends StatelessWidget {
               ),
             ),
           ),
-
           Positioned(
             bottom: 169,
             left: 10,
@@ -283,7 +281,6 @@ class PersonalAccount extends StatelessWidget {
               ),
             ),
           ),
-
           Positioned(
             bottom: 142,
             left: 27,
@@ -291,15 +288,15 @@ class PersonalAccount extends StatelessWidget {
             child: Container(
               width: 339,
               height: 2,
-              decoration: BoxDecoration(color: const Color.fromARGB(255, 191, 146, 127)),
+              decoration: const BoxDecoration(
+                  color: Color.fromARGB(255, 191, 146, 127)),
             ),
           ),
-
-          Positioned(
+          const Positioned(
             bottom: 116,
             left: 64,
             right: 228,
-            child: const Text(
+            child: Text(
               'Delete profile',
               style: TextStyle(
                 color: Color(0xFF7A2917),
@@ -309,19 +306,16 @@ class PersonalAccount extends StatelessWidget {
               ),
             ),
           ),
-
           Positioned(
             bottom: 102,
             left: 28,
             right: 343,
             child: IconButton(
-              icon: const Icon(Icons.delete, color: Color.fromARGB(255, 130, 25, 17)),
-              onPressed: () {
-                
-              },
+              icon: const Icon(Icons.delete,
+                  color: Color.fromARGB(255, 130, 25, 17)),
+              onPressed: () {},
             ),
           ),
-
           Positioned(
             bottom: 101,
             left: 27,
@@ -329,17 +323,17 @@ class PersonalAccount extends StatelessWidget {
             child: Container(
               width: 339,
               height: 2,
-              decoration: BoxDecoration(color: Color.fromARGB(255, 191, 146, 127)),
+              decoration: const BoxDecoration(
+                  color: Color.fromARGB(255, 191, 146, 127)),
             ),
           ),
-
           Positioned(
             top: 773,
             bottom: 0,
             child: Container(
               width: 393,
               height: 79,
-              decoration: ShapeDecoration(
+              decoration: const ShapeDecoration(
                 color: Color(0x99C1826A),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.only(
@@ -352,34 +346,29 @@ class PersonalAccount extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   IconButton(
-                    icon: const Icon(Icons.home, color: Color.fromARGB(255, 130, 25, 17)),
-                    onPressed: () {
-                      
-                    },
+                    icon: const Icon(Icons.home,
+                        color: Color.fromARGB(255, 130, 25, 17)),
+                    onPressed: () {},
                   ),
                   IconButton(
-                    icon: const Icon(Icons.visibility, color: Color.fromARGB(255, 130, 25, 17)),
-                    onPressed: () {
-                      
-                    },
+                    icon: const Icon(Icons.visibility,
+                        color: Color.fromARGB(255, 130, 25, 17)),
+                    onPressed: () {},
                   ),
                   IconButton(
-                    icon: const Icon(Icons.search, color: Color.fromARGB(255, 130, 25, 17)),
-                    onPressed: () {
-                      
-                    },
+                    icon: const Icon(Icons.search,
+                        color: Color.fromARGB(255, 130, 25, 17)),
+                    onPressed: () {},
                   ),
                   IconButton(
-                    icon: const Icon(Icons.favorite, color: Color.fromARGB(255, 130, 25, 17)),
-                    onPressed: () {
-                      
-                    },
+                    icon: const Icon(Icons.favorite,
+                        color: Color.fromARGB(255, 130, 25, 17)),
+                    onPressed: () {},
                   ),
                   IconButton(
-                    icon: const Icon(Icons.person, color: Color.fromARGB(255, 130, 25, 17)),
-                    onPressed: () {
-                      
-                    },
+                    icon: const Icon(Icons.person,
+                        color: Color.fromARGB(255, 130, 25, 17)),
+                    onPressed: () {},
                   ),
                 ],
               ),

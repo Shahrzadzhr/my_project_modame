@@ -219,10 +219,19 @@ class RegisterScreen extends StatelessWidget {
             ),
           ),
          
+                  
+
+                    
           Positioned(
-            bottom: 38,
+            bottom: 39,
             left: 108,
             right: 108,
+            child: Column(
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, '/account');
+                  },
             child: Container(
               width: 177,
               height: 56,
@@ -244,6 +253,7 @@ class RegisterScreen extends StatelessWidget {
           ),
         ],
       ),
-    );
+    )]));
+      
   }
 }

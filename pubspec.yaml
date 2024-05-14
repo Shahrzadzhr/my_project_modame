@@ -17,3 +17,14 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets: 
+  - assets/backgroundimage.jpg 
+  - assets/logo.png
+  - assets/welcome_pic.jpg
+  - assets/google_logo.png
+  - assets/register_pic.jpg
+  - assets/Christina Hendricks.jpg
+  - assets/Homepic.jpg
+  - assets/She&He.png
+
+ 

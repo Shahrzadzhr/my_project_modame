@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class StartScreen extends StatelessWidget {
-  const StartScreen({Key? key}) : super(key: key);
+  const StartScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class StartScreen extends StatelessWidget {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(31),
               ),
-              gradient: LinearGradient(
+              gradient: const LinearGradient(
                 begin: Alignment(-0.01, -1),
                 end: Alignment(0.01, 1.00),
                 colors: [
@@ -25,7 +25,6 @@ class StartScreen extends StatelessWidget {
               ),
             ),
           ),
-
           Positioned(
             top: 32,
             left: 8,
@@ -46,16 +45,15 @@ class StartScreen extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(142.50),
                 ),
-                image: DecorationImage(
+                image: const DecorationImage(
                   image: AssetImage('assets/She&He.png'),
                   fit: BoxFit.fill,
                 ),
               ),
             ),
           ),
-
           Positioned(
-            top: 490,  
+            top: 490,
             left: 5,
             right: 5,
             child: SizedBox(
@@ -64,14 +62,15 @@ class StartScreen extends StatelessWidget {
                 'Create your style profile and receive personalized recommendations',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: Color.fromARGB(255, 108, 67, 51),
+                  color: const Color.fromARGB(255, 108, 67, 51),
                   fontSize: 22,
                   fontFamily: 'SF Pro',
                   fontWeight: FontWeight.w700,
                   shadows: [
                     Shadow(
-                      color: Color.fromARGB(255, 129, 68, 44).withOpacity(0.5),
-                      offset: Offset(2.0, 2.0),
+                      color: const Color.fromARGB(255, 129, 68, 44)
+                          .withOpacity(0.5),
+                      offset: const Offset(2.0, 2.0),
                       blurRadius: 4.0,
                     ),
                   ],
@@ -79,7 +78,6 @@ class StartScreen extends StatelessWidget {
               ),
             ),
           ),
-
           Positioned(
             bottom: 158,
             left: 20,
@@ -110,13 +108,12 @@ class StartScreen extends StatelessWidget {
               ),
             ),
           ),
-
           Positioned(
             bottom: 0,
             child: Container(
               width: 393,
               height: 79,
-              decoration: ShapeDecoration(
+              decoration: const ShapeDecoration(
                 color: Color.fromARGB(153, 139, 87, 67),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.only(
@@ -129,23 +126,28 @@ class StartScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   IconButton(
-                    icon: const Icon(Icons.home, color: Color.fromARGB(255, 130, 25, 17)),
+                    icon: const Icon(Icons.home,
+                        color: Color.fromARGB(255, 130, 25, 17)),
                     onPressed: () {},
                   ),
                   IconButton(
-                    icon: const Icon(Icons.visibility, color: Color.fromARGB(255, 130, 25, 17)),
+                    icon: const Icon(Icons.visibility,
+                        color: Color.fromARGB(255, 130, 25, 17)),
                     onPressed: () {},
                   ),
                   IconButton(
-                    icon: const Icon(Icons.search, color: Color.fromARGB(255, 130, 25, 17)),
+                    icon: const Icon(Icons.search,
+                        color: Color.fromARGB(255, 130, 25, 17)),
                     onPressed: () {},
                   ),
                   IconButton(
-                    icon: const Icon(Icons.favorite, color: Color.fromARGB(255, 130, 25, 17)),
+                    icon: const Icon(Icons.favorite,
+                        color: Color.fromARGB(255, 130, 25, 17)),
                     onPressed: () {},
                   ),
                   IconButton(
-                    icon: const Icon(Icons.person, color: Color.fromARGB(255, 130, 25, 17)),
+                    icon: const Icon(Icons.person,
+                        color: Color.fromARGB(255, 130, 25, 17)),
                     onPressed: () {},
                   ),
                 ],
