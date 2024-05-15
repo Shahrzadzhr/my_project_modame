@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 
 class WelcomeScreen extends StatelessWidget {
-  const WelcomeScreen({Key? key}) : super(key: key);
+  const WelcomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
-          // Background Container with gradient
           Container(
             width: double.infinity,
             height: double.infinity,
@@ -19,7 +18,6 @@ class WelcomeScreen extends StatelessWidget {
                 colors: [
                   Color.fromARGB(159, 234, 213, 205),
                   Color.fromARGB(204, 193, 94, 67)
-                  
                 ],
               ),
               shape: RoundedRectangleBorder(
@@ -27,7 +25,7 @@ class WelcomeScreen extends StatelessWidget {
               ),
             ),
           ),
-          // Image at the top
+
           Container(
             width: double.infinity,
             height: 251,
@@ -51,14 +49,14 @@ class WelcomeScreen extends StatelessWidget {
               ),
             ),
           ),
-          // Positioned welcome text
-          Positioned(
+
+          const Positioned(
             top: 305,
             left: 19,
             right: 228,
             child: Center(
               child: Column(
-                children: const [
+                children: [
                   SizedBox(
                     width: 146,
                     height: 25,
@@ -73,7 +71,6 @@ class WelcomeScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-
                   SizedBox(height: 15),
                   Text(
                     'Nice to have you here',
@@ -89,7 +86,7 @@ class WelcomeScreen extends StatelessWidget {
               ),
             ),
           ),
-          // Buttons for sign-in, register, and social login
+          //
           Positioned(
             top: 426,
             left: 11,
@@ -98,7 +95,7 @@ class WelcomeScreen extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap: () {
-                    Navigator.pushNamed(context, '/login');
+                    Navigator.pushNamed(context, '/signin');
                   },
                   child: Container(
                     width: 371,
@@ -109,7 +106,6 @@ class WelcomeScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(26),
                       ),
                     ),
-
                     alignment: Alignment.center,
                     child: const Text(
                       'SIGN IN',
@@ -122,7 +118,6 @@ class WelcomeScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-
                 const SizedBox(height: 17),
                 GestureDetector(
                   onTap: () {
@@ -137,7 +132,6 @@ class WelcomeScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(26),
                       ),
                     ),
-
                     alignment: Alignment.center,
                     child: const Text(
                       'CREATE ACCOUNT',
@@ -150,7 +144,6 @@ class WelcomeScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-
                 const SizedBox(height: 97),
                 const Text(
                   'Sign in with your social account',
