@@ -12,7 +12,7 @@ class PersonalAccount extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // get currently logged in user from database
-    final loggedInUser = databaseRepository.getUser("2")!;
+    final loggedInUser = databaseRepository.getUser("1")!;
 
     return Scaffold(
       body: Stack(

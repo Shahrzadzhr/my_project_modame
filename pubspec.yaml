@@ -1,10 +1,10 @@
 name: my_project_modame
 description: "A new Flutter project."
-publish_to: 'none'
+publish_to: "none"
 version: 0.1.0
 
 environment:
-  sdk: '>=3.3.0 <4.0.0'
+  sdk: ">=3.3.0 <4.0.0"
 
 dependencies:
   flutter:
@@ -17,14 +17,12 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-  assets: 
-  - assets/backgroundimage.jpg 
-  - assets/logo.png
-  - assets/welcome_pic.jpg
-  - assets/google_logo.png
-  - assets/register_pic.jpg
-  - assets/Christina Hendricks.jpg
-  - assets/Homepic.jpg
-  - assets/She&He.png
+  assets:
+    - assets/backgroundimage.jpg
+    - assets/logo.png
+    - assets/welcome_pic.jpg
+    - assets/google_logo.png
+    - assets/register_pic.jpg
 
- 
+    - assets/Homepic.jpg
+    - assets/She&He.png

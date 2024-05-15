@@ -53,11 +53,11 @@ class StartScreen extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: 490,
+            top: 465,
             left: 5,
             right: 5,
             child: SizedBox(
-              width: 100,
+              width: 50,
               child: Text(
                 'Create your style profile and receive personalized recommendations',
                 textAlign: TextAlign.center,

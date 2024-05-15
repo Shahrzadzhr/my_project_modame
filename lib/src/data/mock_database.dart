@@ -8,10 +8,10 @@ class MockDatabase implements DatabaseRepository {
     UserProfile(
       "1",
       "https://ca.slack-edge.com/T044YC3MSLF-U0682748V1R-3d876dea5ee3-192",
-      "Sharzad",
+      "Shahrzad",
       "Zahraei",
-      "11.11.1995",
-      "+49 1515 53254235",
+      "25.03.1988",
+      "+49 176 202 56596",
     ),
     UserProfile(
       "2",
@@ -19,7 +19,7 @@ class MockDatabase implements DatabaseRepository {
       "David",
       "Sent",
       "11.11.1995",
-      "+49 1515 35345345",
+      "+49 151 301 35345",
     ),
   ];
 
