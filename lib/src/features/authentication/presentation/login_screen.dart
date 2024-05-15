@@ -61,16 +61,16 @@ class LoginScreen extends StatelessWidget {
                   children: [
                     buildTextInput(
                         "   Username, email or mobile number", false),
-                    SizedBox(height: 14),
+                    const SizedBox(height: 14),
                     buildTextInput("   Password", true),
-                    SizedBox(height: 20),
-                    buildLoginButton(),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 20),
+                    buildLoginButton(context),
+                    const SizedBox(height: 8),
                     buildRememberMe(),
                     Container(
                       width: 178,
                       height: 1,
-                      decoration: BoxDecoration(color: Colors.white),
+                      decoration: const BoxDecoration(color: Colors.white),
                     ),
                     const Text(
                       'Forgot password?',
@@ -107,7 +107,7 @@ class LoginScreen extends StatelessWidget {
         decoration: InputDecoration(
           border: InputBorder.none,
           labelText: label,
-          labelStyle: TextStyle(
+          labelStyle: const TextStyle(
             color: Color(0xFF892625),
             fontSize: 14,
             fontFamily: 'SF Pro',
@@ -119,27 +119,31 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  Widget buildLoginButton() {
-    return Container(
-      width: 324,
-      height: 54,
-      decoration: ShapeDecoration(
-        color: const Color(0xFFA63533),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(26.78),
-        ),
-      ),
-      alignment: Alignment.center,
-      child: const Text(
-        'LOG IN',
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 16,
-          fontFamily: 'SF Pro',
-          fontWeight: FontWeight.w700,
-        ),
-      ),
-    );
+  Widget buildLoginButton(BuildContext context) {
+    return GestureDetector(
+        onTap: () {
+          Navigator.pushNamed(context, '/login');
+        },
+        child: Container(
+          width: 324,
+          height: 54,
+          decoration: ShapeDecoration(
+            color: const Color(0xFFA63533),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(26.78),
+            ),
+          ),
+          alignment: Alignment.center,
+          child: const Text(
+            'LOG IN',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 16,
+              fontFamily: 'SF Pro',
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+        ));
   }
 
   Widget buildRememberMe() {
@@ -154,8 +158,7 @@ class LoginScreen extends StatelessWidget {
               onChanged: (newValue) {
                 _rememberMe.value = newValue ?? false;
               },
-              checkColor:
-                  Color.fromARGB(255, 161, 29, 29), // color of tick Mark
+              checkColor: const Color.fromARGB(255, 161, 29, 29),
               activeColor: const Color.fromARGB(255, 255, 255, 255),
             );
           },
