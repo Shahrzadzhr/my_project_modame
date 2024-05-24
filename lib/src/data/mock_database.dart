@@ -1,4 +1,4 @@
-import 'package:my_project_modame/src/features/profile/domain/UserProfile.dart';
+import 'package:my_project_modame/src/features/profile/domain/user_profil.dart';
 
 import 'database_repository.dart';
 
