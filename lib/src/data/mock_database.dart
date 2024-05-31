@@ -23,29 +23,6 @@ class MockDatabase implements DatabaseRepository {
     ),
   ];
 
-  String getFullName() {
-    return UserProfile(
-            id, profilePicUrl, vorname, nachname, birthdate, phonenumber) +
-        nachname;
-  }
-
-// Methode zur Darstellung des Geburtsdatums
-  String getBirthDate() {
-    return birthdate;
-  }
-
-// Methode zur Rückgabe der Telefonnummer als String
-  String getPhoneNumber() {
-    // Formatierung der Telefonnummer könnte hier implementiert werden
-    // Zum Beispiel: (012) 345-6789
-    return phonenumber.toString();
-  }
-
-// Methode zur Erzeugung einer Beschreibung des Benutzerprofils
-  String getDescription() {
-    return "Name: ${getFullName()}, Geburtsdatum: ${getBirthDate()}, Telefonnummer: ${getPhoneNumber()}";
-  }
-
   @override
   Future<UserProfile?> getUser(String id) async {
     for (UserProfile currentUser in userprofiles) {
