@@ -12,7 +12,7 @@ class PersonalAccount extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // get currently logged in user from database
-    final loggedInUser = databaseRepository.getUser("1")!;
+    final loggedInUser = databaseRepository.getUser("1");
 
     return Scaffold(
       body: Stack(
@@ -75,7 +75,7 @@ class PersonalAccount extends StatelessWidget {
             child: Container(
               alignment: Alignment.center,
               child: Text(
-                "${loggedInUser.vorname} ${loggedInUser.nachname}",
+                loggedInUser.getFullName,
                 style: const TextStyle(
                   color: Color(0xFF500004),
                   fontSize: 13,
