@@ -1,4 +1,6 @@
 // PersonalData Class
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 class PersonalData {
   final String name;
   final String bodyShape;
@@ -17,6 +19,8 @@ class PersonalData {
 
 // Methode, um die Informationen des Benutzers als String zurückzugeben
 String getDescription() {
+  // ignore: duplicate_ignore
+  // ignore: prefer_typing_uninitialized_variables
   var name;
   var bodyShape;
   var skinColor;
