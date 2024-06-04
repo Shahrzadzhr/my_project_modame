@@ -25,6 +25,7 @@ class MockDatabase implements DatabaseRepository {
 
   @override
   Future<UserProfile?> getUser(String id) async {
+    await Future.delayed(const Duration(seconds: 2));
     for (UserProfile currentUser in userprofiles) {
       if (currentUser.id == id) {
         // we have a match
@@ -36,6 +37,7 @@ class MockDatabase implements DatabaseRepository {
 
   @override
   Future<void> addUser(UserProfile user) async {
+    await Future.delayed(const Duration(seconds: 2));
     userprofiles.add(user);
   }
 }

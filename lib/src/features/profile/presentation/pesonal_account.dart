@@ -29,11 +29,11 @@ class _PersonalAccountState extends State<PersonalAccount> {
         future: loggedInUser,
         builder: (BuildContext context, AsyncSnapshot<UserProfile?> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
             return Center(child: Text('Fehler: ${snapshot.error}'));
           } else if (!snapshot.hasData || snapshot.data == null) {
-            return Center(child: Text('Kein Benutzer gefunden'));
+            return const Center(child: Text('Kein Benutzer gefunden'));
           } else {
             final UserProfile loggedInUser = snapshot.data!;
 
@@ -76,7 +76,8 @@ class _PersonalAccountState extends State<PersonalAccount> {
                         fit: BoxFit.fill,
                       ),
                       borderRadius: BorderRadius.circular(43.54),
-                      border: Border.all(width: 1, color: const Color(0xFF7B161A)),
+                      border:
+                          Border.all(width: 1, color: const Color(0xFF7B161A)),
                     ),
                   ),
                 ),
