@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "442116079543",
+    "project_id": "modame2",
+    "storage_bucket": "modame2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:442116079543:android:e016691707eedb56dbb232",
+        "android_client_info": {
+          "package_name": "com.example.my_project_modame"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBO-HW19UFOYA_NNQmlAynXCnvXfJPJCww"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
