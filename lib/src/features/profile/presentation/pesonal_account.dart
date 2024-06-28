@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:my_project_modame/src/data/auth_repository.dart';
 import 'package:my_project_modame/src/data/database_repository.dart';
 import 'package:my_project_modame/src/features/profile/domain/user_profil.dart';
 
 class PersonalAccount extends StatefulWidget {
   // Attribute
   final DatabaseRepository databaseRepository;
+  final AuthRepository authRepository;
 
   // Konstruktor
-  const PersonalAccount({super.key, required this.databaseRepository});
+  const PersonalAccount(
+      {super.key,
+      required this.databaseRepository,
+      required this.authRepository});
 
   @override
   _PersonalAccountState createState() => _PersonalAccountState();

@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:my_project_modame/src/data/auth_repository.dart';
+import 'package:my_project_modame/src/data/database_repository.dart';
 
 class RegisterScreen extends StatelessWidget {
-  const RegisterScreen({super.key});
+// Attribute
+  final DatabaseRepository databaseRepository;
+  final AuthRepository authRepository;
+// Konstruktor
+  const RegisterScreen(
+      {super.key,
+      required this.databaseRepository,
+      required this.authRepository});
 
   @override
   Widget build(BuildContext context) {
