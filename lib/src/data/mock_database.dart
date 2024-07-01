@@ -6,27 +6,15 @@ class MockDatabase implements DatabaseRepository {
   // simulated database
   List<UserProfile> userprofiles = [
     UserProfile(
-      "1",
-      "https://ca.slack-edge.com/T044YC3MSLF-U0682748V1R-3d876dea5ee3-192",
-      "Shahrzad",
-      "Zahraei",
-      "25.03.1988",
-      "+49 176 202 56596",
+      id: '1',
       profilePicUrl:
           'https://ca.slack-edge.com/T044YC3MSLF-U0682748V1R-3d876dea5ee3-192',
-      id: '1',
       vorname: 'Shahrzad',
       nachname: 'Zahraei',
       birthdate: '25.03.1988',
       phonenumber: '+49 176 202 56596',
     ),
     UserProfile(
-      "2",
-      "https://ca.slack-edge.com/T044YC3MSLF-U05GXAU2DH6-75f1f34f2c6f-72",
-      "David",
-      "Sent",
-      "11.11.1995",
-      "+49 151 301 35345",
       id: '2',
       profilePicUrl:
           'https://ca.slack-edge.com/T044YC3MSLF-U05GXAU2DH6-75f1f34f2c6f-72',
