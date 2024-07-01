@@ -1,20 +1,47 @@
-// PersonalData Class
-// ignore_for_file: prefer_typing_uninitialized_variables
+import 'dart:convert';
 
+// PersonalData Class
 class PersonalData {
   final String name;
-  final String bodyShape;
-  final String skinColor;
-  final String hairColor;
+  final String bodyshape;
+  final String skincolor;
+  final String haircolor;
   final int height;
   // Konstruktor
   PersonalData({
     required this.name,
-    required this.bodyShape,
-    required this.skinColor,
-    required this.hairColor,
+    required this.bodyshape,
+    required this.skincolor,
+    required this.haircolor,
     required this.height,
   });
+
+  Map<String, dynamic> toMap() {
+    return {
+      "name": name,
+      "bodyshape": bodyshape,
+      "skincolor": skincolor,
+      "haircolor": haircolor,
+      "height": height,
+    };
+  }
+
+  factory PersonalData.fromMap(Map<String, dynamic> map) {
+    return PersonalData(
+      name: map["name"],
+      bodyshape: map["bodyshape"],
+      skincolor: map["skincolor"],
+      haircolor: map["haircolor"],
+      height: map["height"],
+    );
+  }
+}
+
+void main() {
+  String firestoreMap =
+      '''{"name": "Shima", "bodyshape": "hourglass", "skincolor": "beige", "haircolor": "dark brown", "height": 160}''';
+  Map<String, dynamic> dataAsMap = jsonDecode(firestoreMap);
+  PersonalData data = PersonalData.fromMap(dataAsMap);
 }
 
 // Methode, um die Informationen des Benutzers als String zurückzugeben

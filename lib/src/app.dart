@@ -5,7 +5,7 @@ import 'package:my_project_modame/src/data/mock_database.dart';
 import 'package:my_project_modame/src/features/authentication/presentation/login_screen.dart';
 import 'package:my_project_modame/src/features/authentication/presentation/register_screen.dart';
 import 'package:my_project_modame/src/features/authentication/presentation/welcome_screen.dart';
-import 'package:my_project_modame/src/features/profile/presentation/pesonal_account.dart';
+import 'package:my_project_modame/src/features/profile/presentation/personal_account.dart';
 import 'package:my_project_modame/src/features/styling/presentation/home_screen.dart';
 import 'package:my_project_modame/src/features/styling/presentation/start_screen.dart';
 

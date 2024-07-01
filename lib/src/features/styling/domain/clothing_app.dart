@@ -13,7 +13,7 @@ class ClothingApp {
     // Get clothing recommendations
     final recommendation = _engine.getRecommendation(BodyShape as BodyShape);
     print('Hello, ${personaldata.name}!');
-    print('Your body shape is: ${personaldata.bodyShape}');
+    print('Your body shape is: ${personaldata.bodyshape}');
     print('Suitable clothes for your body shape:');
     for (final item in recommendation.suitableClothes) {
       print('- $item');
@@ -29,10 +29,10 @@ class ClothingApp {
   PersonalData getPersonalData() {
     // Implement logic to get personal data information
     return PersonalData(
-      name: 'Shahrzad Zahraei',
-      bodyShape: 'Inverted triangle',
-      skinColor: 'Beige',
-      hairColor: 'Dark brown',
+      name: 'Shima Saber',
+      bodyshape: 'Hourglass',
+      skincolor: 'Beige',
+      haircolor: 'Dark brown',
       height: 160,
     );
   }
@@ -40,10 +40,10 @@ class ClothingApp {
   void provideSkinAndHairColorSuggestions(PersonalData personaldata) {
     print('Additional suggestions based on your skin and hair color:');
     // Implement logic to provide suggestions based on skin and hair color
-    if (personaldata.skinColor == 'Fair' && personaldata.hairColor == 'Brown') {
+    if (personaldata.skincolor == 'Fair' && personaldata.haircolor == 'Brown') {
       print('- Consider earth-toned colors like beige, olive, and burgundy');
-    } else if (personaldata.skinColor == 'Olive' &&
-        personaldata.hairColor == 'Black') {
+    } else if (personaldata.skincolor == 'Olive' &&
+        personaldata.haircolor == 'Black') {
       print('- Try jewel-toned colors like emerald, sapphire, and amethyst');
     }
     // Add more suggestions for different skin and hair color combinations
