@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 // UserProfile Class
 class UserProfile {
   final String id;
@@ -40,13 +38,6 @@ class UserProfile {
     );
   }
 
-  void main() {
-    String firestoreMap =
-        '''{"id": "Shima", "profilePicUrl": null, "vorname": "Shima", "nachname": "Saber", "birthdate": "23.04.1986", "phonenumber": "0176..."}''';
-    Map<String, dynamic> userAsMap = jsonDecode(firestoreMap);
-    UserProfile user = UserProfile.fromMap(userAsMap);
-  }
-
 // Methode zur Rückgabe einer formatierten Darstellung des Benutzerprofils
   String getFullName() {
     return '$vorname  $nachname';
@@ -68,4 +59,24 @@ class UserProfile {
   String getDescription() {
     return "Name: ${getFullName()}, Geburtsdatum: ${getBirthDate()}, Telefonnummer: ${getPhoneNumber()}";
   }
+}
+
+void main() {
+  UserProfile user = UserProfile(
+      id: "Shima86",
+      profilePicUrl: "profilePicUrl",
+      vorname: "Shima",
+      nachname: "Saber",
+      birthdate: "23.04.1986",
+      phonenumber: "+49176...");
+
+  Map<String, dynamic> map = user.toMap();
+  print(map);
+
+  UserProfile user2 = UserProfile.fromMap(map);
+  print(user2.id);
+  print(user2.getFullName());
+  print(user2.getBirthDate());
+  print(user2.getPhoneNumber());
+  print(user2.getDescription());
 }

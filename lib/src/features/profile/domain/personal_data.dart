@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 // PersonalData Class
 class PersonalData {
   final String name;
@@ -26,6 +24,18 @@ class PersonalData {
     };
   }
 
+  void main() {
+    PersonalData data = PersonalData(
+        name: "Shima",
+        bodyshape: "hourglass",
+        skincolor: "beige",
+        haircolor: "dark brown",
+        height: 160);
+
+    Map<String, dynamic> map = data.toMap();
+    print(map);
+  }
+
   factory PersonalData.fromMap(Map<String, dynamic> map) {
     return PersonalData(
       name: map["name"],
@@ -38,10 +48,17 @@ class PersonalData {
 }
 
 void main() {
-  String firestoreMap =
-      '''{"name": "Shima", "bodyshape": "hourglass", "skincolor": "beige", "haircolor": "dark brown", "height": 160}''';
-  Map<String, dynamic> dataAsMap = jsonDecode(firestoreMap);
-  PersonalData data = PersonalData.fromMap(dataAsMap);
+  PersonalData data = PersonalData(
+      name: "Shima",
+      bodyshape: "hourglass",
+      skincolor: "beige",
+      haircolor: "dark brown",
+      height: 160);
+
+  Map<String, dynamic> map = data.toMap();
+
+  PersonalData data2 = PersonalData.fromMap(map);
+  print(data2.name);
 }
 
 // Methode, um die Informationen des Benutzers als String zurückzugeben
