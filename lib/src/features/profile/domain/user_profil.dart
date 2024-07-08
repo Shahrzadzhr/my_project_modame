@@ -50,14 +50,20 @@ class UserProfile {
 
 // Methode zur Rückgabe der Telefonnummer als String
   String getPhoneNumber() {
-    // Formatierung der Telefonnummer könnte hier implementiert werden
-    // Zum Beispiel: (012) 345-6789
     return phonenumber;
   }
 
 // Methode zur Erzeugung einer Beschreibung des Benutzerprofils
   String getDescription() {
     return "Name: ${getFullName()}, Geburtsdatum: ${getBirthDate()}, Telefonnummer: ${getPhoneNumber()}";
+  }
+
+  Map<String, dynamic> toJson() {
+    return toMap();
+  }
+
+  static UserProfile fromJson(Map<String, dynamic> json) {
+    return UserProfile.fromMap(json);
   }
 }
 

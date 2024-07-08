@@ -1,12 +1,3 @@
-/* 
-  X Zugriff auf User (UID, Email, DisplayName, PhotoURL)
-  X Registierung
-  X Login
-  X Logout
-  X AuthStateChanges
-  
-   */
-
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthRepository {

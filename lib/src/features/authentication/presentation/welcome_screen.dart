@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:my_project_modame/src/data/auth_repository.dart';
+import 'package:my_project_modame/src/data/database_repository.dart';
 
 class WelcomeScreen extends StatelessWidget {
-  const WelcomeScreen({super.key});
+  final DatabaseRepository databaseRepository;
+  final AuthRepository authRepository;
+
+  const WelcomeScreen({
+    super.key,
+    required this.databaseRepository,
+    required this.authRepository,
+  });
 
   @override
   Widget build(BuildContext context) {

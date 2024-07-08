@@ -13,10 +13,11 @@ class App extends StatelessWidget {
   final DatabaseRepository databaseRepository;
   final AuthRepository authRepository;
 
-  const App(
-      {super.key,
-      required this.authRepository,
-      required this.databaseRepository});
+  const App({
+    super.key,
+    required this.authRepository,
+    required this.databaseRepository,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -26,12 +27,18 @@ class App extends StatelessWidget {
       title: 'Navigation',
       initialRoute: '/',
       routes: {
-        '/': (context) => const WelcomeScreen(),
+        '/': (context) => WelcomeScreen(
+              databaseRepository: databaseRepository,
+              authRepository: authRepository,
+            ),
         '/signin': (context) => LoginScreen(
               databaseRepository: databaseRepository,
               authRepository: authRepository,
             ),
-        '/login': (context) => const HomeScreen(),
+        '/login': (context) => HomeScreen(
+              databaseRepository: databaseRepository,
+              authRepository: authRepository,
+            ),
         '/register': (context) => RegisterScreen(
               databaseRepository: databaseRepository,
               authRepository: authRepository,
@@ -41,7 +48,10 @@ class App extends StatelessWidget {
               authRepository: authRepository,
             ),
         '/next': (context) => const StartScreen(),
-        '/start': (context) => const HomeScreen(),
+        '/start': (context) => HomeScreen(
+              databaseRepository: databaseRepository,
+              authRepository: authRepository,
+            ),
       },
     );
   }

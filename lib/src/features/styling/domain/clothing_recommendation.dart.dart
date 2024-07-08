@@ -30,25 +30,24 @@ class ClothingRecommendation {
       unsuitableClothes: List<String>.from(map["unsuitableClothes"]),
     );
   }
+
+// Methode, die eine lesbare Zusammenfassung der Kleidungsempfehlungen liefert
+  String getRecommendationSummary() {
+    String suitableItems = suitableClothes.join(', ');
+    String unsuitableItems = unsuitableClothes.join(', ');
+
+    return 'Empfehlungen für ${bodyShape.toString().split('.').last}:\n'
+        'Geeignet: $suitableItems\n'
+        'Ungeeignet: $unsuitableItems';
+  }
 }
 
 void main() {
   String firestoreMap =
-      '''{"bodyshape": "Shima", "bodyshape": "hourglass", "skincolor": "beige", "haircolor": "dark brown", "height": 160}''';
+      '''{"bodyShape": "invertedtriangle", "suitableClothes": ["weite Hose", "klein printed Blouse"], "unsuitableClothes": ["Skinny jeans", "bold printed Blouse"]}''';
   Map<String, dynamic> recommendationAsMap = jsonDecode(firestoreMap);
   ClothingRecommendation recommendation =
       ClothingRecommendation.fromMap(recommendationAsMap);
-}
 
-// Methode, die eine lesbare Zusammenfassung der Kleidungsempfehlungen liefert
-String getRecommendationSummary() {
-  var suitableClothes;
-  String suitableItems = suitableClothes(', ');
-  var unsuitableClothes;
-  String unsuitableItems = unsuitableClothes(', ');
-
-  var bodyShape;
-  return 'Empfehlungen für ${bodyShape.toString().split('.').last}:\n'
-      'Geeignet: $suitableItems\n'
-      'Ungeeignet: $unsuitableItems';
+  print(recommendation.getRecommendationSummary());
 }

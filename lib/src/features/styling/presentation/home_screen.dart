@@ -1,8 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:my_project_modame/src/data/auth_repository.dart';
+import 'package:my_project_modame/src/data/database_repository.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({
+    super.key,
+    required DatabaseRepository databaseRepository,
+    required AuthRepository authRepository,
+  });
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,10 +40,11 @@ class HomeScreen extends StatelessWidget {
             top: 32,
             left: 8,
             child: IconButton(
-              icon: const Icon(Icons.arrow_back_ios),
-              color: const Color.fromARGB(255, 111, 29, 27),
-              onPressed: () => Navigator.pop(context),
-            ),
+                icon: const Icon(Icons.arrow_back_ios),
+                color: const Color.fromARGB(255, 111, 29, 27),
+                onPressed: () {
+                  Navigator.pop(context);
+                }),
           ),
           Positioned(
             top: 92,
