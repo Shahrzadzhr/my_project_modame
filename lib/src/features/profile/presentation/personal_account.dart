@@ -288,23 +288,26 @@ class _PersonalAccountState extends State<PersonalAccount> {
                   bottom: 169,
                   left: 10,
                   right: 10,
-                  child: Container(
-                    width: 373,
-                    height: 55,
-                    decoration: ShapeDecoration(
-                      color: const Color(0xFFAD6F57),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(41),
+                  child: GestureDetector(
+                    onTap: () => widget.authRepository.logout(),
+                    child: Container(
+                      width: 373,
+                      height: 55,
+                      decoration: ShapeDecoration(
+                        color: const Color(0xFFAD6F57),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(41),
+                        ),
                       ),
-                    ),
-                    alignment: Alignment.center,
-                    child: const Text(
-                      'LOG OUT',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontFamily: 'SF Pro',
-                        fontWeight: FontWeight.w700,
+                      alignment: Alignment.center,
+                      child: const Text(
+                        'LOG OUT',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontFamily: 'SF Pro',
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
                     ),
                   ),

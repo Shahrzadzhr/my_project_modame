@@ -1,8 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:my_project_modame/src/data/auth_repository.dart';
 import 'package:my_project_modame/src/data/database_repository.dart';
-import 'package:my_project_modame/src/features/styling/presentation/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   final DatabaseRepository databaseRepository;
@@ -38,28 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final loginScreen = LoginScreen(
-        databaseRepository: widget.databaseRepository,
-        authRepository: widget.authRepository);
-    final homeScreen = HomeScreen(
-        databaseRepository: widget.databaseRepository,
-        authRepository: widget.authRepository);
-    const loginKey = ValueKey('loginScreen');
-    const homeKey = ValueKey('homeScreen');
-
-    return StreamBuilder<User?>(
-      stream: widget.authRepository.authStateChanges(),
-      builder: (context, snapshot) {
-        final user = snapshot.data;
-        return MaterialApp(
-          key: user == null ? loginKey : homeKey,
-          theme: ThemeData.light(),
-          darkTheme: ThemeData.dark(),
-          themeMode: ThemeMode.light,
-          home: user == null ? loginScreenWidget(context) : homeScreen,
-        );
-      },
-    );
+    return loginScreenWidget(context);
   }
 
   Widget loginScreenWidget(BuildContext context) {
@@ -183,7 +160,7 @@ class _LoginScreenState extends State<LoginScreen> {
         onTap: () {
           authRepository.loginWithEmailAndPassword(
               controllerMail.text, controllerPassword.text);
-          Navigator.pushNamed(context, '/login');
+          // Navigator.pushNamed(context, '/login');
         },
         child: Container(
           width: 324,

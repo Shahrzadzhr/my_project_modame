@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:my_project_modame/src/data/auth_repository.dart';
 import 'package:my_project_modame/src/data/database_repository.dart';
@@ -23,35 +24,47 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     DatabaseRepository databaseRepository = MockDatabase();
 
-    return MaterialApp(
-      title: 'Navigation',
-      initialRoute: '/',
-      routes: {
-        '/': (context) => WelcomeScreen(
-              databaseRepository: databaseRepository,
-              authRepository: authRepository,
-            ),
-        '/signin': (context) => LoginScreen(
-              databaseRepository: databaseRepository,
-              authRepository: authRepository,
-            ),
-        '/login': (context) => HomeScreen(
-              databaseRepository: databaseRepository,
-              authRepository: authRepository,
-            ),
-        '/register': (context) => RegisterScreen(
-              databaseRepository: databaseRepository,
-              authRepository: authRepository,
-            ),
-        '/account': (context) => PersonalAccount(
-              databaseRepository: databaseRepository,
-              authRepository: authRepository,
-            ),
-        '/next': (context) => const StartScreen(),
-        '/start': (context) => HomeScreen(
-              databaseRepository: databaseRepository,
-              authRepository: authRepository,
-            ),
+    const loginKey = ValueKey('loginScreen');
+    const homeKey = ValueKey('homeScreen');
+    return StreamBuilder<User?>(
+      stream: authRepository.authStateChanges(),
+      builder: (context, snapshot) {
+        final user = snapshot.data;
+        final initialRoute = user == null ? "/" : "/start";
+        return MaterialApp(
+          key: user == null ? loginKey : homeKey,
+          theme: ThemeData.light(),
+          darkTheme: ThemeData.dark(),
+          themeMode: ThemeMode.light,
+          routes: {
+            '/': (context) => WelcomeScreen(
+                  databaseRepository: databaseRepository,
+                  authRepository: authRepository,
+                ),
+            '/signin': (context) => LoginScreen(
+                  databaseRepository: databaseRepository,
+                  authRepository: authRepository,
+                ),
+            '/login': (context) => HomeScreen(
+                  databaseRepository: databaseRepository,
+                  authRepository: authRepository,
+                ),
+            '/register': (context) => RegisterScreen(
+                  databaseRepository: databaseRepository,
+                  authRepository: authRepository,
+                ),
+            '/account': (context) => PersonalAccount(
+                  databaseRepository: databaseRepository,
+                  authRepository: authRepository,
+                ),
+            '/next': (context) => const StartScreen(),
+            '/start': (context) => HomeScreen(
+                  databaseRepository: databaseRepository,
+                  authRepository: authRepository,
+                ),
+          },
+          initialRoute: initialRoute,
+        );
       },
     );
   }
