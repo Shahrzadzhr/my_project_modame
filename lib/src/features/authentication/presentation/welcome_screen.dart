@@ -43,8 +43,8 @@ class WelcomeScreen extends StatelessWidget {
                 BoxShadow(
                   color: Colors.brown.withOpacity(0.6),
                   spreadRadius: 7,
-                  blurRadius: 8,
-                  offset: const Offset(0, 3),
+                  blurRadius: 30,
+                  offset: const Offset(0, 5),
                 ),
               ],
               image: const DecorationImage(

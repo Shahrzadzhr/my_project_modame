@@ -109,7 +109,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       color: Colors.white,
                       fontSize: 15,
                       fontFamily: 'SF Pro',
-                      fontWeight: FontWeight.w600,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ],
@@ -143,7 +143,7 @@ class _LoginScreenState extends State<LoginScreen> {
             color: Color(0xFF892625),
             fontSize: 14,
             fontFamily: 'SF Pro',
-            fontWeight: FontWeight.w500,
+            fontWeight: FontWeight.bold,
           ),
           suffixIcon: obscureText ? const Icon(Icons.visibility_off) : null,
         ),
@@ -160,7 +160,7 @@ class _LoginScreenState extends State<LoginScreen> {
         onTap: () {
           authRepository.loginWithEmailAndPassword(
               controllerMail.text, controllerPassword.text);
-          // Navigator.pushNamed(context, '/login');
+          Navigator.pushNamed(context, '/login');
         },
         child: Container(
           width: 324,
@@ -207,7 +207,7 @@ class _LoginScreenState extends State<LoginScreen> {
             color: Colors.white,
             fontSize: 15,
             fontFamily: 'SF Pro',
-            fontWeight: FontWeight.w600,
+            fontWeight: FontWeight.bold,
           ),
         ),
       ],

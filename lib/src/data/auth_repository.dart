@@ -31,4 +31,7 @@ class AuthRepository {
   Stream<User?> authStateChanges() {
     return _firebaseAuth.authStateChanges();
   }
+
+  void registerWithEmailAndPasswordAndFirstnameAndLastname(
+      String text, String text2, String text3, String text4) {}
 }
