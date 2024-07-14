@@ -268,6 +268,16 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
+          Container(
+            width: 393,
+            height: 852,
+            decoration: ShapeDecoration(
+              color: Colors.black.withOpacity(0.6499999761581421),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(31),
+              ),
+            ),
+          )
         ],
       ),
     );

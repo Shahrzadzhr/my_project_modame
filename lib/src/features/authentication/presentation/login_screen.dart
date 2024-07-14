@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:my_project_modame/src/data/auth_repository.dart';
-import 'package:my_project_modame/src/data/database_repository.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
-  final DatabaseRepository databaseRepository;
-  final AuthRepository authRepository;
-
-  const LoginScreen(
-      {super.key,
-      required this.databaseRepository,
-      required this.authRepository});
+  const LoginScreen({
+    super.key,
+  });
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -94,8 +90,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(height: 14),
                   buildTextInput("  Password", true, passwordController),
                   const SizedBox(height: 20),
-                  buildLoginButton(context, widget.authRepository,
-                      emailController, passwordController),
+                  buildLoginButton(
+                      context, emailController, passwordController),
                   const SizedBox(height: 8),
                   buildRememberMe(),
                   Container(
@@ -145,7 +141,9 @@ class _LoginScreenState extends State<LoginScreen> {
             fontFamily: 'SF Pro',
             fontWeight: FontWeight.bold,
           ),
-          suffixIcon: obscureText ? const Icon(Icons.visibility_off) : null,
+          suffixIcon: obscureText
+              ? const Icon(Icons.visibility_off)
+              : const Icon(Icons.visibility),
         ),
       ),
     );
@@ -153,13 +151,13 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Widget buildLoginButton(
       BuildContext context,
-      AuthRepository authRepository,
-      TextEditingController controllerMail,
-      TextEditingController controllerPassword) {
+      TextEditingController emailController,
+      TextEditingController passwordController) {
     return GestureDetector(
         onTap: () {
+          AuthRepository authRepository = context.read<AuthRepository>();
           authRepository.loginWithEmailAndPassword(
-              controllerMail.text, controllerPassword.text);
+              emailController.text, passwordController.text);
           Navigator.pushNamed(context, '/login');
         },
         child: Container(

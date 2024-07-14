@@ -7,10 +7,6 @@ class AuthRepository {
   // Konstruktor
   AuthRepository(this._firebaseAuth);
 
-  // Methoden
-
-  /// returns the currently logged in [User]
-  /// or `null` if no User is logged in
   User? getCurrentUser() {
     return _firebaseAuth.currentUser;
   }
@@ -32,6 +28,9 @@ class AuthRepository {
     return _firebaseAuth.authStateChanges();
   }
 
-  void registerWithEmailAndPasswordAndFirstnameAndLastname(
-      String text, String text2, String text3, String text4) {}
+  Future<void> registerWithEmailAndPasswordAndFirstnameAndLastname(
+      String email, String pw, String firstname, String lastname) {
+    return _firebaseAuth.register(
+        email: email, password: pw, firstname: firstname, lastname: lastname);
+  }
 }

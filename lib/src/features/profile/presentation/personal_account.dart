@@ -1,18 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:my_project_modame/src/data/auth_repository.dart';
-import 'package:my_project_modame/src/data/database_repository.dart';
 import 'package:my_project_modame/src/features/profile/domain/user_profil.dart';
+import 'package:provider/provider.dart';
 
 class PersonalAccount extends StatefulWidget {
-  // Attribute
-  final DatabaseRepository databaseRepository;
-  final AuthRepository authRepository;
-
   // Konstruktor
-  const PersonalAccount(
-      {super.key,
-      required this.databaseRepository,
-      required this.authRepository});
+  const PersonalAccount({
+    super.key,
+  });
 
   @override
   _PersonalAccountState createState() => _PersonalAccountState();
@@ -24,7 +19,7 @@ class _PersonalAccountState extends State<PersonalAccount> {
   @override
   void initState() {
     super.initState();
-    loggedInUser = widget.databaseRepository.getUser("1");
+    loggedInUser = context.read<AuthRepository>().getUser("1");
   }
 
   @override
@@ -261,6 +256,7 @@ class _PersonalAccountState extends State<PersonalAccount> {
                       right: 10,
                       child: GestureDetector(
                         onTap: () {
+                          context.read<AuthRepository>();
                           Navigator.pushNamed(context, '/next');
                         },
                         child: Container(
@@ -290,7 +286,9 @@ class _PersonalAccountState extends State<PersonalAccount> {
                       left: 10,
                       right: 10,
                       child: GestureDetector(
-                        onTap: () => widget.authRepository.logout(),
+                        onTap: () {
+                          context.read<AuthRepository>();
+                        },
                         child: Container(
                           width: 373,
                           height: 55,

@@ -1,16 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:my_project_modame/src/data/auth_repository.dart';
-import 'package:my_project_modame/src/data/database_repository.dart';
+import 'package:provider/provider.dart';
 
 class RegisterScreen extends StatefulWidget {
-// Attribute
-  final DatabaseRepository databaseRepository;
-  final AuthRepository authRepository;
-// Konstruktor
-  const RegisterScreen(
-      {super.key,
-      required this.databaseRepository,
-      required this.authRepository});
+  const RegisterScreen({
+    super.key,
+  });
 
   @override
   State<RegisterScreen> createState() => _RegisterScreenState();
@@ -140,13 +135,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   const SizedBox(height: 40),
                   buildPasswordInput("  Password", passwordController),
                   const SizedBox(height: 40),
-                  buildRegisterButton(
-                      context,
-                      widget.authRepository,
-                      firstnameController,
-                      lastnameController,
-                      emailController,
-                      passwordController),
+                  buildRegisterButton(context, firstnameController,
+                      lastnameController, emailController, passwordController),
                 ],
               ),
             ),
@@ -172,7 +162,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           border: InputBorder.none,
           labelText: label,
           labelStyle: const TextStyle(
-            color: Color.fromARGB(255, 83, 23, 22),
+            color: Color.fromARGB(255, 112, 78, 78),
             fontSize: 15,
             fontFamily: 'SF Pro',
             fontWeight: FontWeight.bold,
@@ -199,13 +189,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
               border: InputBorder.none,
               labelText: label,
               labelStyle: const TextStyle(
-                color: Color.fromARGB(255, 83, 23, 22),
+                color: Color.fromARGB(255, 112, 78, 78),
                 fontSize: 15,
                 fontFamily: 'SF Pro',
                 fontWeight: FontWeight.bold,
               ),
               suffixIcon: IconButton(
-                icon: Icon(obscureText ? Icons.visibility : Icons.visibility),
+                icon:
+                    Icon(obscureText ? Icons.visibility_off : Icons.visibility),
                 onPressed: () {
                   setState(() {
                     obscureText = !obscureText;
@@ -221,13 +212,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   Widget buildRegisterButton(
       BuildContext context,
-      AuthRepository authRepository,
       TextEditingController controllerFirstname,
       TextEditingController controllerLastname,
       TextEditingController controllerMail,
       TextEditingController controllerPassword) {
     return GestureDetector(
       onTap: () {
+        AuthRepository authRepository = context.read<AuthRepository>();
         authRepository.registerWithEmailAndPasswordAndFirstnameAndLastname(
             controllerFirstname.text,
             controllerLastname.text,

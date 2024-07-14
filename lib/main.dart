@@ -7,6 +7,7 @@ import 'package:my_project_modame/src/app.dart';
 import 'package:my_project_modame/src/data/auth_repository.dart';
 import 'package:my_project_modame/src/data/database_repository.dart';
 import 'package:my_project_modame/src/data/firestore_database.dart';
+import 'package:provider/provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,12 +15,19 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  DatabaseRepository firestoreDatabase =
+  DatabaseRepository databaseRepository =
       FirestoreDatabase(FirebaseFirestore.instance);
   AuthRepository authRepository = AuthRepository(FirebaseAuth.instance);
 
-  runApp(App(
-    databaseRepository: firestoreDatabase,
-    authRepository: authRepository,
+  runApp(MultiProvider(
+    providers: [
+      Provider<DatabaseRepository>(
+        create: (_) => databaseRepository,
+      ),
+      Provider<AuthRepository>(
+        create: (_) => authRepository,
+      ),
+    ],
+    child: const App(),
   ));
 }
