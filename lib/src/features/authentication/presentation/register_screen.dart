@@ -219,7 +219,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     return GestureDetector(
       onTap: () {
         AuthRepository authRepository = context.read<AuthRepository>();
-        authRepository.registerWithEmailAndPasswordAndFirstnameAndLastname(
+        authRepository.signUpWithEmailAndPassword(
             controllerFirstname.text,
             controllerLastname.text,
             controllerMail.text,

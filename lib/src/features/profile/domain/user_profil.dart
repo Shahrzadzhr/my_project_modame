@@ -69,12 +69,12 @@ class UserProfile {
 
 void main() {
   UserProfile user = UserProfile(
-      id: "Shima86",
+      id: "1",
       profilePicUrl: "profilePicUrl",
-      vorname: "Shima",
-      nachname: "Saber",
-      birthdate: "23.04.1986",
-      phonenumber: "+49176...");
+      vorname: "Shahrzad",
+      nachname: "Zahraei",
+      birthdate: "25.03.1988",
+      phonenumber: "+4917620256596");
 
   Map<String, dynamic> map = user.toMap();
   print(map);

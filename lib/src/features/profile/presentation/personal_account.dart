@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_project_modame/src/data/auth_repository.dart';
+import 'package:my_project_modame/src/data/database_repository.dart';
 import 'package:my_project_modame/src/features/profile/domain/user_profil.dart';
 import 'package:provider/provider.dart';
 
@@ -19,7 +20,7 @@ class _PersonalAccountState extends State<PersonalAccount> {
   @override
   void initState() {
     super.initState();
-    loggedInUser = context.read<AuthRepository>().getUser("1");
+    loggedInUser = context.read<DatabaseRepository>().getUser("1");
   }
 
   @override
