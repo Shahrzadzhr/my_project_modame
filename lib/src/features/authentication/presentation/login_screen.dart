@@ -120,33 +120,38 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget buildTextInput(
       String label, bool obscureText, TextEditingController controller) {
     return Container(
-      width: 322,
-      height: 71,
-      decoration: ShapeDecoration(
-        color: Colors.white.withOpacity(0.6),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(13),
-        ),
-      ),
-      alignment: Alignment.topLeft,
-      child: TextFormField(
-        controller: controller,
-        obscureText: obscureText,
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          labelText: label,
-          labelStyle: const TextStyle(
-            color: Color(0xFF892625),
-            fontSize: 14,
-            fontFamily: 'SF Pro',
-            fontWeight: FontWeight.bold,
+        width: 322,
+        height: 71,
+        decoration: ShapeDecoration(
+          color: Colors.white.withOpacity(0.6),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(13),
           ),
-          suffixIcon: obscureText
-              ? const Icon(Icons.visibility_off)
-              : const Icon(Icons.visibility),
         ),
-      ),
-    );
+        alignment: Alignment.topLeft,
+        child: TextFormField(
+            controller: controller,
+            obscureText: obscureText,
+            decoration: InputDecoration(
+                border: InputBorder.none,
+                labelText: label,
+                labelStyle: const TextStyle(
+                  color: Color(0xFF892625),
+                  fontSize: 14,
+                  fontFamily: 'SF Pro',
+                  fontWeight: FontWeight.bold,
+                ),
+                suffixIcon: IconButton(
+                  icon: Icon(
+                      obscureText ? Icons.visibility_off : Icons.visibility),
+                  onPressed: () {
+                    setState(
+                      () {
+                        obscureText = !obscureText;
+                      },
+                    );
+                  },
+                ))));
   }
 
   Widget buildLoginButton(

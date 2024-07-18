@@ -21,10 +21,10 @@ class _HomeScreenState extends State<HomeScreen> {
             decoration: ShapeDecoration(
               gradient: const LinearGradient(
                 begin: Alignment(0.00, -1.00),
-                end: Alignment(0.00, 1.00),
+                end: Alignment(0, 1),
                 colors: [
-                  Color.fromARGB(102, 186, 126, 105),
-                  Color.fromARGB(209, 179, 97, 64)
+                  Color.fromARGB(102, 183, 80, 39),
+                  Color.fromARGB(209, 255, 246, 242)
                 ],
               ),
               shape: RoundedRectangleBorder(
@@ -71,10 +71,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   IconButton(
-                    icon: const Icon(Icons.keyboard_arrow_right,
-                        color: Color.fromARGB(255, 136, 29, 29)),
-                    onPressed: () {},
-                  ),
+                      icon: const Icon(Icons.keyboard_arrow_right,
+                          color: Color.fromARGB(255, 136, 29, 29)),
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/haircolor');
+                      }),
                 ],
               ),
             ),
@@ -111,7 +112,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   IconButton(
                     icon: const Icon(Icons.keyboard_arrow_right,
                         color: Color.fromARGB(255, 136, 29, 29)),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/skincolor');
+                    },
                   ),
                 ],
               ),
@@ -149,7 +152,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   IconButton(
                     icon: const Icon(Icons.keyboard_arrow_right,
                         color: Color.fromARGB(255, 136, 29, 29)),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/bodyshape');
+                    },
                   ),
                 ],
               ),
@@ -187,7 +192,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   IconButton(
                     icon: const Icon(Icons.keyboard_arrow_right,
                         color: Color.fromARGB(255, 136, 29, 29)),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/height');
+                    },
                   ),
                 ],
               ),
