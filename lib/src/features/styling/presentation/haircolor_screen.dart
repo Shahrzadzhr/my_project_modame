@@ -31,7 +31,6 @@ class _HairColorScreenState extends State<HairColorScreen> {
           ),
         ),
       ),
-      const SizedBox(height: 15),
       Positioned(
         top: 166,
         left: 20,
@@ -275,10 +274,10 @@ class _HairColorScreenState extends State<HairColorScreen> {
         ),
       ),
       Positioned(
-          top: 158,
-          left: 27,
-          right: 27,
-          child: Container(
+        top: 158,
+        left: 27,
+        right: 27,
+        child: Container(
             width: 339,
             height: 290,
             decoration: const ShapeDecoration(
@@ -294,7 +293,158 @@ class _HairColorScreenState extends State<HairColorScreen> {
                 ),
               ),
             ),
-          )),
+            child: GridView.count(
+                crossAxisCount: 4,
+                mainAxisSpacing: 20,
+                crossAxisSpacing: 20,
+                padding: const EdgeInsets.all(40),
+                children: [
+                  Container(
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage("assets/1.png"),
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                    child: IconButton(
+                        icon:
+                            const Icon(Icons.circle, color: Colors.transparent),
+                        onPressed: () {}),
+                  ),
+                  Container(
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage("assets/2.png"),
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                    child: IconButton(
+                        icon:
+                            const Icon(Icons.circle, color: Colors.transparent),
+                        onPressed: () {}),
+                  ),
+                  Container(
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage("assets/3.png"),
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                    child: IconButton(
+                        icon:
+                            const Icon(Icons.circle, color: Colors.transparent),
+                        onPressed: () {}),
+                  ),
+                  Container(
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage("assets/4.png"),
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                    child: IconButton(
+                        icon:
+                            const Icon(Icons.circle, color: Colors.transparent),
+                        onPressed: () {}),
+                  ),
+                  Container(
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage("assets/5.png"),
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                    child: IconButton(
+                        icon:
+                            const Icon(Icons.circle, color: Colors.transparent),
+                        onPressed: () {}),
+                  ),
+                  Container(
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage("assets/6.png"),
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                    child: IconButton(
+                        icon:
+                            const Icon(Icons.circle, color: Colors.transparent),
+                        onPressed: () {}),
+                  ),
+                  Container(
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage("assets/7.png"),
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                    child: IconButton(
+                        icon:
+                            const Icon(Icons.circle, color: Colors.transparent),
+                        onPressed: () {}),
+                  ),
+                  Container(
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage("assets/8.png"),
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                    child: IconButton(
+                        icon:
+                            const Icon(Icons.circle, color: Colors.transparent),
+                        onPressed: () {}),
+                  ),
+                  Container(
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage("assets/9.png"),
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                    child: IconButton(
+                        icon:
+                            const Icon(Icons.circle, color: Colors.transparent),
+                        onPressed: () {}),
+                  ),
+                  Container(
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage("assets/10.png"),
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                    child: IconButton(
+                        icon:
+                            const Icon(Icons.circle, color: Colors.transparent),
+                        onPressed: () {}),
+                  ),
+                  Container(
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage("assets/11.png"),
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                    child: IconButton(
+                        icon:
+                            const Icon(Icons.circle, color: Colors.transparent),
+                        onPressed: () {}),
+                  ),
+                  Container(
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage("assets/12.png"),
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                    child: IconButton(
+                        icon:
+                            const Icon(Icons.circle, color: Colors.transparent),
+                        onPressed: () {}),
+                  ),
+                ])),
+      )
     ]));
   }
 }

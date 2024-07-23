@@ -276,124 +276,144 @@ class _BodyShapeScreenState extends State<BodyShapeScreen> {
             ),
           ),
           Positioned(
-              top: 305,
-              bottom: 253,
-              left: 27,
-              right: 27,
-              child: Container(
-                width: 339,
-                height: 290,
-                decoration: const ShapeDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment(0.00, -1.00),
-                    end: Alignment(0, 1),
-                    colors: [Color(0xFFAD6F57), Color(0xB7E5BFB0)],
+            top: 305,
+            bottom: 253,
+            left: 27,
+            right: 27,
+            child: Container(
+              width: 339,
+              height: 290,
+              decoration: const ShapeDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment(0.00, -1.00),
+                  end: Alignment(0, 1),
+                  colors: [Color(0xFFAD6F57), Color(0xB7E5BFB0)],
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(70),
+                    bottomRight: Radius.circular(70),
                   ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(70),
-                      bottomRight: Radius.circular(70),
-                    ),
+                ),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Container(
+                        width: 80,
+                        height: 80,
+                        decoration: ShapeDecoration(
+                          shape: RoundedRectangleBorder(
+                            side: const BorderSide(width: 0),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          image: const DecorationImage(
+                            image: AssetImage("assets/Hourglass.png"),
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+                        child: IconButton(
+                          icon: const Icon(Icons.circle,
+                              color: Colors.transparent),
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/hourglass_shape');
+                          },
+                        ),
+                      ),
+                      Container(
+                        width: 80,
+                        height: 80,
+                        decoration: ShapeDecoration(
+                          shape: RoundedRectangleBorder(
+                            side: const BorderSide(width: 0),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          image: const DecorationImage(
+                            image: AssetImage("assets/Rounded.png"),
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+                        child: IconButton(
+                          icon: const Icon(Icons.circle,
+                              color: Colors.transparent),
+                          onPressed: () {},
+                        ),
+                      ),
+                    ],
                   ),
-                ),
-              )),
-          Positioned(
-            bottom: 420,
-            top: 341,
-            right: 239.2,
-            left: 89,
-            child: Container(
-              width: 64.80,
-              height: 91,
-              decoration: ShapeDecoration(
-                image: const DecorationImage(
-                  image: AssetImage("assets/Hourglass.png"),
-                  fit: BoxFit.fill,
-                ),
-                shape: RoundedRectangleBorder(
-                  side: const BorderSide(width: 0),
-                  borderRadius: BorderRadius.circular(20),
-                ),
-              ),
-            ),
-          ),
-          Positioned(
-            bottom: 358,
-            top: 405,
-            right: 172,
-            left: 172,
-            child: Container(
-              width: 64.80,
-              height: 91,
-              decoration: ShapeDecoration(
-                image: const DecorationImage(
-                  image: AssetImage("assets/Inverted_Triangle.png"),
-                  fit: BoxFit.fill,
-                ),
-                shape: RoundedRectangleBorder(
-                  side: const BorderSide(width: 0),
-                  borderRadius: BorderRadius.circular(20),
-                ),
-              ),
-            ),
-          ),
-          Positioned(
-            bottom: 420,
-            top: 341,
-            right: 100,
-            left: 237,
-            child: Container(
-              width: 64.80,
-              height: 91,
-              decoration: ShapeDecoration(
-                image: const DecorationImage(
-                  image: AssetImage("assets/Pear.png"),
-                  fit: BoxFit.fill,
-                ),
-                shape: RoundedRectangleBorder(
-                  side: const BorderSide(width: 0),
-                  borderRadius: BorderRadius.circular(20),
-                ),
-              ),
-            ),
-          ),
-          Positioned(
-            bottom: 290,
-            top: 471,
-            right: 236,
-            left: 89,
-            child: Container(
-              width: 64.80,
-              height: 91,
-              decoration: ShapeDecoration(
-                image: const DecorationImage(
-                  image: AssetImage("assets/Apple.png"),
-                  fit: BoxFit.fill,
-                ),
-                shape: RoundedRectangleBorder(
-                  side: const BorderSide(width: 0),
-                  borderRadius: BorderRadius.circular(20),
-                ),
-              ),
-            ),
-          ),
-          Positioned(
-            bottom: 290,
-            top: 470,
-            right: 96,
-            left: 235,
-            child: Container(
-              width: 64.80,
-              height: 91,
-              decoration: ShapeDecoration(
-                image: const DecorationImage(
-                  image: AssetImage("assets/Rectangle.png"),
-                  fit: BoxFit.fill,
-                ),
-                shape: RoundedRectangleBorder(
-                  side: const BorderSide(width: 0),
-                  borderRadius: BorderRadius.circular(20),
-                ),
+                  const SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Container(
+                        width: 80,
+                        height: 80,
+                        decoration: ShapeDecoration(
+                          shape: RoundedRectangleBorder(
+                            side: const BorderSide(width: 0),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          image: const DecorationImage(
+                            image: AssetImage("assets/Inverted_triangle.png"),
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+                        child: IconButton(
+                          icon: const Icon(Icons.circle,
+                              color: Colors.transparent),
+                          onPressed: () {},
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Container(
+                        width: 80,
+                        height: 80,
+                        decoration: ShapeDecoration(
+                          shape: RoundedRectangleBorder(
+                            side: const BorderSide(width: 0),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          image: const DecorationImage(
+                            image: AssetImage("assets/Triangle.png"),
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+                        child: IconButton(
+                          icon: const Icon(Icons.circle,
+                              color: Colors.transparent),
+                          onPressed: () {},
+                        ),
+                      ),
+                      Container(
+                        width: 80,
+                        height: 80,
+                        decoration: ShapeDecoration(
+                          shape: RoundedRectangleBorder(
+                            side: const BorderSide(width: 0),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          image: const DecorationImage(
+                            image: AssetImage("assets/Rectangle.png"),
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+                        child: IconButton(
+                          icon: const Icon(Icons.circle,
+                              color: Colors.transparent),
+                          onPressed: () {},
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
           ),
