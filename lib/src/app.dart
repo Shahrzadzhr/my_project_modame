@@ -10,6 +10,7 @@ import 'package:my_project_modame/src/features/styling/presentation/Hourglass_sh
 import 'package:my_project_modame/src/features/styling/presentation/bodyshape_screen.dart';
 import 'package:my_project_modame/src/features/styling/presentation/home_screen.dart';
 import 'package:my_project_modame/src/features/styling/presentation/start_screen.dart';
+import 'package:my_project_modame/src/features/styling/presentation/warm_spring.dart';
 import 'package:provider/provider.dart';
 
 class App extends StatelessWidget {
@@ -42,6 +43,7 @@ class App extends StatelessWidget {
             '/bodyshape': (context) => const BodyShapeScreen(),
             '/haircolor': (context) => const HairColorScreen(),
             '/hourglass_shape': (context) => const HourglassShapeScreen(),
+            '/warm_spring': (context) => const WarmSpringScreen(),
           },
           initialRoute: initialRoute,
         );

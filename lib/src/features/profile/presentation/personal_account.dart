@@ -33,9 +33,9 @@ class _PersonalAccountState extends State<PersonalAccount> {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return const Center(child: CircularProgressIndicator());
               } else if (snapshot.hasError) {
-                return Center(child: Text('Fehler: ${snapshot.error}'));
+                return Center(child: Text('Error: ${snapshot.error}'));
               } else if (!snapshot.hasData || snapshot.data == null) {
-                return const Center(child: Text('Kein Benutzer gefunden'));
+                return const Center(child: Text('No user found'));
               } else {
                 final UserProfile loggedInUser = snapshot.data!;
 
