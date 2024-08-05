@@ -5,40 +5,50 @@ import 'package:my_project_modame/src/features/profile/domain/user_profil.dart';
 import 'package:provider/provider.dart';
 
 class PersonalAccount extends StatefulWidget {
-  // Konstruktor
+  // Constructor
   const PersonalAccount({
     super.key,
   });
 
   @override
-  _PersonalAccountState createState() => _PersonalAccountState();
+  State<PersonalAccount> createState() => _PersonalAccountState();
 }
 
 class _PersonalAccountState extends State<PersonalAccount> {
-  Future<UserProfile?>? loggedInUser;
+  late TextEditingController phonenumberController;
+  late TextEditingController birthdateController;
+  late TextEditingController preferedcontentController;
 
   @override
   void initState() {
+    phonenumberController = TextEditingController();
+    birthdateController = TextEditingController();
+    preferedcontentController = TextEditingController();
     super.initState();
-    loggedInUser = context.read<DatabaseRepository>().getUser("1");
+  }
+
+  @override
+  void dispose() {
+    phonenumberController.dispose();
+    birthdateController.dispose();
+    preferedcontentController.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    return accountScreenWidget(context);
+  }
+
+  Widget accountScreenWidget(BuildContext context) {
+    final UserProfile user = context.read()<AuthRepository>().getCurrentUser();
     return Scaffold(
         body: FutureBuilder<UserProfile?>(
-            future: loggedInUser,
-            builder:
-                (BuildContext context, AsyncSnapshot<UserProfile?> snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return const Center(child: CircularProgressIndicator());
-              } else if (snapshot.hasError) {
-                return Center(child: Text('Error: ${snapshot.error}'));
-              } else if (!snapshot.hasData || snapshot.data == null) {
-                return const Center(child: Text('No user found'));
-              } else {
-                final UserProfile loggedInUser = snapshot.data!;
-
+            future: context.read<DatabaseRepository>().getUser(user.id),
+            builder: (context, snapshot) {
+              if (snapshot.hasData &&
+                  snapshot.connectionState == ConnectionState.done) {
+                final data = snapshot.data!;
                 return Stack(
                   children: [
                     Container(
@@ -74,7 +84,7 @@ class _PersonalAccountState extends State<PersonalAccount> {
                         height: 89,
                         decoration: BoxDecoration(
                           image: DecorationImage(
-                            image: NetworkImage(loggedInUser.profilePicUrl),
+                            image: NetworkImage(data.profilePicUrl),
                             fit: BoxFit.fill,
                           ),
                           borderRadius: BorderRadius.circular(43.54),
@@ -100,7 +110,7 @@ class _PersonalAccountState extends State<PersonalAccount> {
                       child: Container(
                         alignment: Alignment.center,
                         child: Text(
-                          loggedInUser.getFullName(),
+                          data.getFullName(),
                           style: const TextStyle(
                             color: Color(0xFF500004),
                             fontSize: 13,
@@ -114,121 +124,79 @@ class _PersonalAccountState extends State<PersonalAccount> {
                       top: 213,
                       left: 24,
                       right: 24,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                      child: SingleChildScrollView(
+                        child: Column(
                         children: [
-                          const Text(
-                            'Phone number',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 14,
-                              fontFamily: 'SF Pro',
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                          const SizedBox(height: 13),
-                          Container(
-                            height: 56,
-                            padding: const EdgeInsets.symmetric(horizontal: 10),
-                            decoration: BoxDecoration(
-                              color: Colors.white.withOpacity(0.75),
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  loggedInUser.getPhoneNumber(),
-                                  style: TextStyle(
-                                    color: Colors.black.withOpacity(0.7),
-                                    fontSize: 13,
-                                    fontFamily: 'SF Pro',
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                IconButton(
-                                  icon: const Icon(Icons.edit,
-                                      color: Color.fromARGB(255, 136, 29, 29)),
-                                  onPressed: () {},
-                                )
-                              ],
-                            ),
-                          ),
+                          buildTextInput("Phone number", false , phonenumberController),
+                           const SizedBox(height: 40), 
+                           buildTextInput("Birthdate", false, birthdateController),
+                            const SizedBox(height: 40), 
+                           buildTextInput("Prefered content" , false, preferedcontentController),
+                           
+                           
                         ],
                       ),
                     ),
-                    Positioned(
-                      top: 323,
-                      left: 24,
-                      right: 24,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            'Birth date',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 14,
-                              fontFamily: 'SF Pro',
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                          const SizedBox(height: 13),
-                          Container(
-                            height: 56,
-                            padding: const EdgeInsets.symmetric(horizontal: 10),
-                            decoration: BoxDecoration(
-                              color: Colors.white.withOpacity(0.75),
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  loggedInUser.getBirthDate(),
-                                  style: TextStyle(
-                                    color: const Color.fromARGB(255, 79, 79, 79)
-                                        .withOpacity(0.7),
-                                    fontSize: 13,
-                                    fontFamily: 'SF Pro',
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
+                  ) 
+                  ],
+                );
+  }}),
+    );        
+  }                        
+                            
+                            
+                            
+     Widget buildTextInput(                       
+      String label, bool obscureText, TextEditingController controller) {
+        return Container(
+          height: 56,
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          decoration: BoxDecoration(
+          color: Colors.white.withOpacity(0.75),
+          borderRadius: BorderRadius.circular(20),
+        ),
+         alignment: Alignment.topLeft,
+         child: TextFormField(
+          controller: controller,    
+          obscureText: obscureText,
+          decoration: InputDecoration(
+            border: InputBorder.none,
+            labelText: label,
+            labelStyle: const TextStyle(
+            color: Colors.black,
+            fontSize: 14,
+            fontFamily: 'SF Pro',
+            fontWeight: FontWeight.w400,
+          ),
+        ),
+      ),
+    );
+      }
+      
+        
+                         
+                            
                                 IconButton(
-                                  icon: const Icon(Icons.keyboard_arrow_right,
+                                  icon = const Icon(Icons.edit,
                                       color: Color.fromARGB(255, 136, 29, 29)),
-                                  onPressed: () {},
+                                  onPressed = () {},
                                 )
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Positioned(
-                      top: 429,
-                      left: 24,
-                      right: 24,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            'Preferred content',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 14,
-                              fontFamily: 'SF Pro',
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                          const SizedBox(height: 13),
+                              
+                                IconButton(
+                                  icon = const Icon(Icons.keyboard_arrow_right,
+                                      color: Color.fromARGB(255, 136, 29, 29)),
+                                  onPressed = () {},
+                                )
+                             
+                    
+                          
                           Container(
-                            height: 56,
-                            decoration: BoxDecoration(
+                            height = 56,
+                            decoration = BoxDecoration(
                               color: Colors.white.withOpacity(0.75),
                               borderRadius: BorderRadius.circular(20),
                             ),
-                            child: Row(
+                            child = Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
@@ -252,13 +220,16 @@ class _PersonalAccountState extends State<PersonalAccount> {
                       ),
                     ),
                     Positioned(
-                      bottom: 244,
-                      left: 10,
-                      right: 10,
-                      child: GestureDetector(
+                      bottom = 244,
+                      left = 10,
+                      right = 10,
+                      child = GestureDetector(
                         onTap: () {
-                          context.read<AuthRepository>();
-                          Navigator.pushNamed(context, '/next');
+                          user.phonenumber = phonenumebercontroller.text
+
+                          context.read<DatabaseRepository>().updateUser(user);
+
+                          Navigator.pushNamed(context, '/start');
                         },
                         child: Container(
                           width: 373,
@@ -283,12 +254,13 @@ class _PersonalAccountState extends State<PersonalAccount> {
                       ),
                     ),
                     Positioned(
-                      bottom: 169,
-                      left: 10,
-                      right: 10,
-                      child: GestureDetector(
+                      bottom = 169,
+                      left = 10,
+                      right = 10,
+                      child = GestureDetector(
                         onTap: () {
                           context.read<AuthRepository>();
+                          Navigator.pushNamed(context, '/welcome');
                         },
                         child: Container(
                           width: 373,
@@ -313,35 +285,10 @@ class _PersonalAccountState extends State<PersonalAccount> {
                       ),
                     ),
                     Positioned(
-                      bottom: 142,
-                      left: 27,
-                      right: 27,
-                      child: Container(
-                        width: 339,
-                        height: 2,
-                        decoration: const BoxDecoration(
-                            color: Color.fromARGB(255, 191, 146, 127)),
-                      ),
-                    ),
-                    const Positioned(
-                      bottom: 116,
-                      left: 64,
-                      right: 228,
-                      child: Text(
-                        'Delete profile',
-                        style: TextStyle(
-                          color: Color(0xFF7A2917),
-                          fontSize: 14,
-                          fontFamily: 'SF Pro',
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      bottom: 101,
-                      left: 27,
-                      right: 27,
-                      child: Container(
+                      bottom = 142,
+                      left = 27,
+                      right = 27,
+                      child = Container(
                         width: 339,
                         height: 2,
                         decoration: const BoxDecoration(
@@ -349,8 +296,41 @@ class _PersonalAccountState extends State<PersonalAccount> {
                       ),
                     ),
                     Positioned(
-                      bottom: 0,
-                      child: Container(
+                      bottom = 100,
+                      left = 23,
+                      child = Row(
+                        children: [
+                          IconButton(
+                            icon: const Icon(Icons.delete,
+                                color: Color.fromARGB(255, 136, 29, 29)),
+                            onPressed: () {},
+                          ),
+                          const Text(
+                            'Delete profile',
+                            style: TextStyle(
+                              color: Color(0xFF7A2917),
+                              fontSize: 14,
+                              fontFamily: 'SF Pro',
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Positioned(
+                      bottom = 101,
+                      left = 27,
+                      right = 27,
+                      child = Container(
+                        width: 339,
+                        height: 2,
+                        decoration: const BoxDecoration(
+                            color: Color.fromARGB(255, 191, 146, 127)),
+                      ),
+                    ),
+                    Positioned(
+                      bottom = 0,
+                      child = Container(
                         width: 393,
                         height: 79,
                         decoration: const ShapeDecoration(
@@ -395,6 +375,15 @@ class _PersonalAccountState extends State<PersonalAccount> {
                       ),
                     ),
                   ],
+                )
+              } else if (snapshot.connectionState != ConnectionState.done) {
+                return const Center(child: CircularProgressIndicator());
+              } else {
+                print(snapshot.connectionState);
+                print(snapshot.data);
+                print(snapshot.error);
+                return const Center(
+                  child: Icon(Icons.error),
                 );
               }
             }));

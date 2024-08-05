@@ -26,24 +26,23 @@ class App extends StatelessWidget {
       stream: context.read<AuthRepository>().authStateChanges(),
       builder: (context, snapshot) {
         final user = snapshot.data;
-        final initialRoute = user == null ? "/" : "/start";
+        final initialRoute = user == null ? "/welcome" : "/home";
         return MaterialApp(
           key: user == null ? loginKey : homeKey,
           theme: ThemeData.light(),
           darkTheme: ThemeData.dark(),
           themeMode: ThemeMode.light,
           routes: {
-            '/': (context) => const WelcomeScreen(),
-            '/signin': (context) => const LoginScreen(),
-            '/login': (context) => const HomeScreen(),
+            '/welcome': (context) => const WelcomeScreen(),
+            '/login': (context) => const LoginScreen(),
+            '/home': (context) => const HomeScreen(),
             '/register': (context) => const RegisterScreen(),
             '/account': (context) => const PersonalAccount(),
-            '/next': (context) => const StartScreen(),
-            '/start': (context) => const HomeScreen(),
+            '/start': (context) => const StartScreen(),
             '/bodyshape': (context) => const BodyShapeScreen(),
             '/haircolor': (context) => const HairColorScreen(),
-            '/hourglass_shape': (context) => const HourglassShapeScreen(),
-            '/warm_spring': (context) => const WarmSpringScreen(),
+            '/hourglass': (context) => const HourglassShapeScreen(),
+            '/warm.spring': (context) => const WarmSpringScreen(),
           },
           initialRoute: initialRoute,
         );

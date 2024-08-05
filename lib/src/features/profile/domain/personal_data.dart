@@ -26,7 +26,7 @@ class PersonalData {
 
   void main() {
     PersonalData data = PersonalData(
-        name: "Shima",
+        name: "Shahrzad",
         bodyshape: "hourglass",
         skincolor: "beige",
         haircolor: "dark brown",
@@ -49,7 +49,7 @@ class PersonalData {
 
 void main() {
   PersonalData data = PersonalData(
-      name: "Shima",
+      name: "Shahrzad",
       bodyshape: "hourglass",
       skincolor: "beige",
       haircolor: "dark brown",

@@ -10,18 +10,29 @@ class FirestoreDatabase implements DatabaseRepository {
   @override
   Future<void> addUser(UserProfile user) async {
     await _firebaseFirestore
-        .collection("users")
+        .collection("Userprofile")
         .doc(user.id)
         .set(user.toJson());
   }
 
   @override
   Future<UserProfile?> getUser(String id) async {
-    DocumentSnapshot doc =
-        await _firebaseFirestore.collection("users").doc(id).get();
-    if (doc.exists) {
-      return UserProfile.fromJson(doc.data() as Map<String, dynamic>);
+    final snapshot =
+        await _firebaseFirestore.collection("Userprofile").doc(id).get();
+    final map = snapshot.data();
+    print(map);
+    if (map == null) {
+      return null;
+    } else {
+      return UserProfile.fromMap(map);
     }
-    return null;
+  }
+
+  @override
+  Future<void> updateUser(UserProfile user) async {
+    await _firebaseFirestore
+        .collection("Userprofile")
+        .doc(user.id)
+        .update(user.toJson());
   }
 }

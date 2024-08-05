@@ -1,27 +1,30 @@
 // UserProfile Class
 class UserProfile {
   final String id;
-  final String profilePicUrl;
-  final String vorname;
-  final String nachname;
-  final String birthdate;
-  final String phonenumber;
+  final String email;
+  String profilePicUrl;
+  final String firstname;
+  final String lastname;
+  String birthdate;
+  String phonenumber;
 
   // Konstruktor
   UserProfile(
       {required this.id,
+      required this.email,
       required this.profilePicUrl,
-      required this.vorname,
-      required this.nachname,
+      required this.firstname,
+      required this.lastname,
       required this.birthdate,
       required this.phonenumber});
 
   Map<String, dynamic> toMap() {
     return {
       "id": id,
+      "email": email,
       "profilePicUrl": profilePicUrl,
-      "vorname": vorname,
-      "nachname": nachname,
+      "firstname": firstname,
+      "lastname": lastname,
       "birthdate": birthdate,
       "phonenumber": phonenumber,
     };
@@ -30,32 +33,33 @@ class UserProfile {
   factory UserProfile.fromMap(Map<String, dynamic> map) {
     return UserProfile(
       id: map["id"],
+      email: map["email"],
       profilePicUrl: map["profilePicUrl"],
-      vorname: map["vorname"],
-      nachname: map["nachname"],
+      firstname: map["firstname"],
+      lastname: map["lastname"],
       birthdate: map["birthdate"],
       phonenumber: map["phonenumber"],
     );
   }
 
-// Methode zur Rückgabe einer formatierten Darstellung des Benutzerprofils
   String getFullName() {
-    return '$vorname  $nachname';
+    return '$firstname  $lastname';
   }
 
-// Methode zur Darstellung des Geburtsdatums
   String getBirthDate() {
     return birthdate;
   }
 
-// Methode zur Rückgabe der Telefonnummer als String
   String getPhoneNumber() {
     return phonenumber;
   }
 
-// Methode zur Erzeugung einer Beschreibung des Benutzerprofils
   String getDescription() {
     return "Name: ${getFullName()}, Geburtsdatum: ${getBirthDate()}, Telefonnummer: ${getPhoneNumber()}";
+  }
+
+  void setPhoneNumber(String phonenumber) {
+    this.phonenumber = phonenumber;
   }
 
   Map<String, dynamic> toJson() {
@@ -70,9 +74,10 @@ class UserProfile {
 void main() {
   UserProfile user = UserProfile(
       id: "1",
+      email: "hallo@gmail.com",
       profilePicUrl: "profilePicUrl",
-      vorname: "Shahrzad",
-      nachname: "Zahraei",
+      firstname: "Shahrzad",
+      lastname: "Zahraei",
       birthdate: "25.03.1988",
       phonenumber: "+4917620256596");
 

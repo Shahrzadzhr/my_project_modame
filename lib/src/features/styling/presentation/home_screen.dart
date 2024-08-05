@@ -113,7 +113,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     icon: const Icon(Icons.keyboard_arrow_right,
                         color: Color.fromARGB(255, 136, 29, 29)),
                     onPressed: () {
-                      Navigator.pushNamed(context, '/skincolor');
+                      //Navigator.pushNamed(context, '/skincolor');
                     },
                   ),
                 ],
@@ -193,7 +193,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     icon: const Icon(Icons.keyboard_arrow_right,
                         color: Color.fromARGB(255, 136, 29, 29)),
                     onPressed: () {
-                      Navigator.pushNamed(context, '/height');
+                      //Navigator.pushNamed(context, '/height');
                     },
                   ),
                 ],
@@ -269,7 +269,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   IconButton(
                     icon: const Icon(Icons.person,
                         color: Color.fromARGB(255, 130, 25, 17)),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/account');
+                    },
                   ),
                 ],
               ),

@@ -84,7 +84,7 @@ class StartScreen extends StatelessWidget {
             right: 20,
             child: GestureDetector(
               onTap: () {
-                Navigator.pushNamed(context, '/start');
+                Navigator.pushNamed(context, '/home');
               },
               child: Container(
                 width: 352,

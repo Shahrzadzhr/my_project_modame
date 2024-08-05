@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:my_project_modame/src/features/profile/domain/user_profil.dart';
 
 class AuthRepository {
   // Attribute
@@ -14,17 +15,26 @@ class AuthRepository {
   }
 
   Future<void> signUpWithEmailAndPassword(
-      String email, String pw, String firstname, String lastname) {
+      String firstname, String lastname, String email, String pw) {
     return _firebaseAuth
         .createUserWithEmailAndPassword(email: email, password: pw)
         .then((UserCredential userCredential) {
       String uid = userCredential.user!.uid;
-      return _firestore.collection('users').doc(uid).set({
+      UserProfile user = UserProfile(
+          id: uid,
+          email: email,
+          profilePicUrl: "",
+          firstname: firstname,
+          lastname: lastname,
+          birthdate: "",
+          phonenumber: "");
+      _firestore.collection("Userprofile").doc(uid).set(user.toJson());
+      /*return _firestore.collection('Users').doc(uid).set({
         'firstname': firstname,
         'lastname': lastname,
         'email': email,
-        'password': pw,
       });
+      */
     });
   }
 
