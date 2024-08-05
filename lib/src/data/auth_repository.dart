@@ -49,4 +49,6 @@ class AuthRepository {
   Stream<User?> authStateChanges() {
     return _firebaseAuth.authStateChanges();
   }
+
+  void signOut() {}
 }
