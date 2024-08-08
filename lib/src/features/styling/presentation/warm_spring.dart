@@ -38,6 +38,56 @@ class _WarmSpringScreen extends State<WarmSpringScreen> {
               Navigator.pop(context);
             }),
       ),
+      Positioned(
+        bottom: 0,
+        child: Container(
+          width: 393,
+          height: 79,
+          decoration: const ShapeDecoration(
+            color: Color(0xFFD6A997),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(31),
+                bottomRight: Radius.circular(31),
+              ),
+            ),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              IconButton(
+                icon: const Icon(Icons.home,
+                    color: Color.fromARGB(255, 130, 25, 17)),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/home');
+                },
+              ),
+              IconButton(
+                icon: const Icon(Icons.visibility,
+                    color: Color.fromARGB(255, 130, 25, 17)),
+                onPressed: () {},
+              ),
+              IconButton(
+                icon: const Icon(Icons.search,
+                    color: Color.fromARGB(255, 130, 25, 17)),
+                onPressed: () {},
+              ),
+              IconButton(
+                icon: const Icon(Icons.favorite,
+                    color: Color.fromARGB(255, 130, 25, 17)),
+                onPressed: () {},
+              ),
+              IconButton(
+                icon: const Icon(Icons.person,
+                    color: Color.fromARGB(255, 130, 25, 17)),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/account');
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
     ]));
   }
 }

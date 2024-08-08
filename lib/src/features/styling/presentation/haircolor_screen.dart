@@ -394,7 +394,7 @@ class _HairColorScreenState extends State<HairColorScreen> {
                         icon:
                             const Icon(Icons.circle, color: Colors.transparent),
                         onPressed: () {
-                          Navigator.pushNamed(context, '/warm_spring');
+                          Navigator.pushNamed(context, '/warm.spring');
                         }),
                   ),
                   Container(

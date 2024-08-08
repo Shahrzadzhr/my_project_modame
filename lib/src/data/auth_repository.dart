@@ -29,12 +29,11 @@ class AuthRepository {
           birthdate: "",
           phonenumber: "");
       _firestore.collection("Userprofile").doc(uid).set(user.toJson());
-      /*return _firestore.collection('Users').doc(uid).set({
+      return _firestore.collection('Users').doc(uid).set({
         'firstname': firstname,
         'lastname': lastname,
         'email': email,
       });
-      */
     });
   }
 

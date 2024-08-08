@@ -319,7 +319,7 @@ class _BodyShapeScreenState extends State<BodyShapeScreen> {
                           icon: const Icon(Icons.circle,
                               color: Colors.transparent),
                           onPressed: () {
-                            Navigator.pushNamed(context, '/hourglass_shape');
+                            Navigator.pushNamed(context, '/hourglass');
                           },
                         ),
                       ),
