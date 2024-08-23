@@ -226,7 +226,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
               controllerLastname.text,
               controllerMail.text,
               controllerPassword.text);
-          Navigator.pushNamed(context, '/account');
+          context.read<AuthRepository>().setNewlyRegistered(true);
+          //Navigator.pushNamed(context, '/account');
         } catch (e) {
           print(e);
         }

@@ -22,7 +22,7 @@ class _HourglassShapeScreenState extends State<HourglassShapeScreen> {
               gradient: const LinearGradient(
                 begin: Alignment(0.00, -1.00),
                 end: Alignment(0, 1),
-                colors: [Color(0xBFA63533), Color(0xA3E6B39E)],
+                colors: [Color(0xA3E6B39E), Color(0xCCA63533)],
               ),
               borderRadius: BorderRadius.circular(31),
             ),
@@ -50,16 +50,16 @@ class _HourglassShapeScreenState extends State<HourglassShapeScreen> {
                         color: Colors.black,
                         fontSize: 12,
                         fontFamily: 'SF Pro',
-                        fontWeight: FontWeight.w700,
+                        fontWeight: FontWeight.w800,
                       ),
                     ),
                     TextSpan(
                       text: 'HOURGLASS',
                       style: TextStyle(
-                        color: Color.fromARGB(255, 91, 7, 10),
+                        color: Color.fromARGB(255, 105, 8, 11),
                         fontSize: 12,
                         fontFamily: 'SF Pro',
-                        fontWeight: FontWeight.w700,
+                        fontWeight: FontWeight.w800,
                       ),
                     ),
                     TextSpan(
@@ -68,7 +68,7 @@ class _HourglassShapeScreenState extends State<HourglassShapeScreen> {
                         color: Colors.black,
                         fontSize: 12,
                         fontFamily: 'SF Pro',
-                        fontWeight: FontWeight.w700,
+                        fontWeight: FontWeight.w800,
                       ),
                     ),
                   ],
@@ -78,7 +78,7 @@ class _HourglassShapeScreenState extends State<HourglassShapeScreen> {
             ),
           ),
           const Positioned(
-            top: 110,
+            top: 100,
             left: 42,
             right: 42,
             child: Column(
@@ -95,7 +95,7 @@ class _HourglassShapeScreenState extends State<HourglassShapeScreen> {
             ),
           ),
           const Positioned(
-            top: 250,
+            top: 220,
             left: 42,
             child: Center(
               child: Text.rich(
@@ -107,16 +107,16 @@ class _HourglassShapeScreenState extends State<HourglassShapeScreen> {
                         color: Colors.black,
                         fontSize: 12,
                         fontFamily: 'SF Pro',
-                        fontWeight: FontWeight.w700,
+                        fontWeight: FontWeight.w800,
                       ),
                     ),
                     TextSpan(
                       text: 'GOALS:',
                       style: TextStyle(
-                        color: Color.fromARGB(255, 91, 7, 10),
+                        color: Color.fromARGB(255, 105, 8, 11),
                         fontSize: 12,
                         fontFamily: 'SF Pro',
-                        fontWeight: FontWeight.w700,
+                        fontWeight: FontWeight.w800,
                       ),
                     ),
                   ],
@@ -126,7 +126,7 @@ class _HourglassShapeScreenState extends State<HourglassShapeScreen> {
             ),
           ),
           const Positioned(
-            top: 284,
+            top: 248,
             left: 42,
             right: 42,
             child: Column(
@@ -141,13 +141,13 @@ class _HourglassShapeScreenState extends State<HourglassShapeScreen> {
             ),
           ),
           Positioned(
-            bottom: 480,
+            bottom: 510,
             left: 30,
             right: 30,
             child: Container(
               height: 2,
               decoration:
-                  const BoxDecoration(color: Color.fromARGB(255, 111, 29, 27)),
+                  const BoxDecoration(color: Color.fromARGB(255, 155, 82, 79)),
             ),
           ),
           Positioned(
@@ -231,15 +231,15 @@ class BulletListItem extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text("• ", style: TextStyle(fontSize: 13)),
+        const Text("• ", style: TextStyle(fontSize: 12)),
         Expanded(
           child: Text(
             text,
             style: const TextStyle(
               color: Colors.black,
-              fontSize: 13,
+              fontSize: 12,
               fontFamily: 'SF Pro',
-              fontWeight: FontWeight.w600,
+              fontWeight: FontWeight.w700,
             ),
           ),
         ),

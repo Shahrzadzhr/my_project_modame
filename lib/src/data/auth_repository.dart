@@ -6,11 +6,21 @@ class AuthRepository {
   // Attribute
   final FirebaseAuth _firebaseAuth;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  bool newlyRegistered = false;
 
   // Konstruktor
   AuthRepository(this._firebaseAuth);
 
+  void setNewlyRegistered(bool value) {
+    newlyRegistered = value;
+  }
+
+  bool isNewlyRegistered() {
+    return newlyRegistered;
+  }
+
   User? getCurrentUser() {
+    // Hier wurde die Bedingung und Logik korrigiert
     return _firebaseAuth.currentUser;
   }
 
@@ -48,6 +58,4 @@ class AuthRepository {
   Stream<User?> authStateChanges() {
     return _firebaseAuth.authStateChanges();
   }
-
-  void signOut() {}
 }

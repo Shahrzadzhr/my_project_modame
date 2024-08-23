@@ -15,9 +15,11 @@ class PersonalAccount extends StatefulWidget {
 class _PersonalAccountState extends State<PersonalAccount> {
   late TextEditingController phonenumberController;
   late TextEditingController birthdateController;
+  String selectedGender = 'Men';
 
   @override
   void initState() {
+    debugPrint("accountscreen");
     phonenumberController = TextEditingController();
     birthdateController = TextEditingController();
     super.initState();
@@ -35,11 +37,26 @@ class _PersonalAccountState extends State<PersonalAccount> {
     return accountScreenWidget(context);
   }
 
+  Future<UserProfile?> getUserFuture(BuildContext context) async {
+    try {
+      User? user = context.read<AuthRepository>().getCurrentUser();
+      if (user != null) {
+        return await context.read<DatabaseRepository>().getUser(user.uid);
+      } else {
+        throw Exception();
+      }
+    } catch (e) {
+      print(e);
+    }
+    return null;
+  }
+
   Widget accountScreenWidget(BuildContext context) {
-    final User? user = context.read<AuthRepository>().getCurrentUser();
+    //final User? user = context.read<AuthRepository>().getCurrentUser();
+
     return Scaffold(
       body: FutureBuilder<UserProfile?>(
-        future: context.read<DatabaseRepository>().getUser(user!.uid),
+        future: getUserFuture(context),
         builder: (context, snapshot) {
           if (snapshot.hasData &&
               snapshot.connectionState == ConnectionState.done) {
@@ -67,11 +84,11 @@ class _PersonalAccountState extends State<PersonalAccount> {
                   child: IconButton(
                     icon: const Icon(Icons.arrow_back_ios),
                     color: const Color.fromARGB(255, 111, 29, 27),
-                    onPressed: () => Navigator.pop(context),
+                    onPressed: () => Navigator.maybePop(context),
                   ),
                 ),
                 Positioned(
-                  top: 62,
+                  top: 70,
                   left: 150,
                   right: 150,
                   child: Container(
@@ -79,7 +96,9 @@ class _PersonalAccountState extends State<PersonalAccount> {
                     height: 89,
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: NetworkImage(data.profilePicUrl),
+                        image: NetworkImage(data.profilePicUrl == ""
+                            ? "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg"
+                            : data.profilePicUrl),
                         fit: BoxFit.fill,
                       ),
                       borderRadius: BorderRadius.circular(43.54),
@@ -89,7 +108,7 @@ class _PersonalAccountState extends State<PersonalAccount> {
                   ),
                 ),
                 Positioned(
-                  top: 162,
+                  top: 170,
                   left: 100,
                   right: 100,
                   child: Container(
@@ -99,7 +118,7 @@ class _PersonalAccountState extends State<PersonalAccount> {
                   ),
                 ),
                 Positioned(
-                  top: 165,
+                  top: 180,
                   left: 16,
                   right: 16,
                   child: Container(
@@ -116,26 +135,17 @@ class _PersonalAccountState extends State<PersonalAccount> {
                   ),
                 ),
                 Positioned(
-                  top: 213,
+                  top: 250,
                   left: 24,
                   right: 24,
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
-                        buildTextInput(
-                            "Phone number", false, phonenumberController),
-                        IconButton(
-                          icon: const Icon(Icons.edit,
-                              color: Color.fromARGB(255, 136, 29, 29)),
-                          onPressed: () {},
-                        ),
+                        buildTextInputWithIcon("Phone number", false,
+                            phonenumberController, Icons.edit),
                         const SizedBox(height: 40),
-                        buildTextInput("Birthdate", false, birthdateController),
-                        IconButton(
-                          icon: const Icon(Icons.keyboard_arrow_right,
-                              color: Color.fromARGB(255, 136, 29, 29)),
-                          onPressed: () {},
-                        ),
+                        buildTextInputWithIcon("Birthdate", false,
+                            birthdateController, Icons.keyboard_arrow_right),
                         const SizedBox(height: 40),
                         Container(
                           height: 56,
@@ -146,19 +156,42 @@ class _PersonalAccountState extends State<PersonalAccount> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(
-                                '   Women',
-                                style: TextStyle(
-                                  color: Colors.black.withOpacity(0.7),
-                                  fontSize: 13,
-                                  fontFamily: 'SF Pro',
-                                  fontWeight: FontWeight.bold,
+                              Padding(
+                                padding: const EdgeInsets.only(left: 16.0),
+                                child: Text(
+                                  "Gender",
+                                  style: TextStyle(
+                                    color: Colors.black.withOpacity(0.7),
+                                    fontSize: 13,
+                                    fontFamily: 'SF Pro',
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ),
-                              IconButton(
+                              DropdownButton<String>(
+                                value: selectedGender,
                                 icon: const Icon(Icons.keyboard_arrow_right,
                                     color: Color.fromARGB(255, 136, 29, 29)),
-                                onPressed: () {},
+                                iconSize: 24,
+                                elevation: 16,
+                                underline: Container(
+                                  height: 0,
+                                  color: Colors.transparent,
+                                ),
+                                onChanged: (String? newValue) {
+                                  setState(() {
+                                    selectedGender = newValue!;
+                                  });
+                                },
+                                items: <String>[
+                                  'Women',
+                                  'Men'
+                                ].map<DropdownMenuItem<String>>((String value) {
+                                  return DropdownMenuItem<String>(
+                                    value: value,
+                                    child: Text(value),
+                                  );
+                                }).toList(),
                               )
                             ],
                           ),
@@ -176,6 +209,7 @@ class _PersonalAccountState extends State<PersonalAccount> {
                       data.birthdate = birthdateController.text;
                       data.phonenumber = phonenumberController.text;
                       context.read<DatabaseRepository>().updateUser(data);
+                      context.read<AuthRepository>().setNewlyRegistered(false);
                       Navigator.pushNamed(context, '/start');
                     },
                     child: Container(
@@ -206,7 +240,7 @@ class _PersonalAccountState extends State<PersonalAccount> {
                   right: 10,
                   child: GestureDetector(
                     onTap: () {
-                      context.read<AuthRepository>().signOut();
+                      context.read<AuthRepository>().logout();
                       Navigator.pushNamed(context, '/welcome');
                     },
                     child: Container(
@@ -297,7 +331,9 @@ class _PersonalAccountState extends State<PersonalAccount> {
                         IconButton(
                           icon: const Icon(Icons.home,
                               color: Color.fromARGB(255, 130, 25, 17)),
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/home');
+                          },
                         ),
                         IconButton(
                           icon: const Icon(Icons.visibility,
@@ -327,10 +363,9 @@ class _PersonalAccountState extends State<PersonalAccount> {
             );
           } else if (snapshot.connectionState != ConnectionState.done) {
             return const Center(child: CircularProgressIndicator());
+          } else if (snapshot.hasError) {
+            return const Center(child: CircularProgressIndicator());
           } else {
-            print(snapshot.connectionState);
-            print(snapshot.data);
-            print(snapshot.error);
             return const Center(
               child: Icon(Icons.error),
             );
@@ -339,31 +374,46 @@ class _PersonalAccountState extends State<PersonalAccount> {
       ),
     );
   }
+}
 
-  Widget buildTextInput(
-      String label, bool obscureText, TextEditingController controller) {
-    return Container(
-      height: 56,
-      padding: const EdgeInsets.symmetric(horizontal: 10),
-      decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.75),
-        borderRadius: BorderRadius.circular(20),
-      ),
-      alignment: Alignment.topLeft,
-      child: TextFormField(
-        controller: controller,
-        obscureText: obscureText,
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          labelText: label,
-          labelStyle: const TextStyle(
-            color: Colors.black,
-            fontSize: 14,
-            fontFamily: 'SF Pro',
-            fontWeight: FontWeight.w400,
-          ),
+Widget buildTextInputWithIcon(
+  String label,
+  bool obscureText,
+  TextEditingController controller,
+  IconData icon,
+) {
+  // Create a FocusNode to control the focus of the TextFormField
+  final FocusNode focusNode = FocusNode();
+
+  return Container(
+    height: 56,
+    padding: const EdgeInsets.symmetric(horizontal: 10),
+    decoration: BoxDecoration(
+      color: Colors.white.withOpacity(0.75),
+      borderRadius: BorderRadius.circular(20),
+    ),
+    alignment: Alignment.topLeft,
+    child: TextFormField(
+      controller: controller,
+      obscureText: obscureText,
+      focusNode: focusNode, // Attach the FocusNode to the TextFormField
+      decoration: InputDecoration(
+        border: InputBorder.none,
+        labelText: label,
+        labelStyle: const TextStyle(
+          color: Colors.black,
+          fontSize: 14,
+          fontFamily: 'SF Pro',
+          fontWeight: FontWeight.w400,
+        ),
+        suffixIcon: IconButton(
+          icon: Icon(icon, color: const Color.fromARGB(255, 136, 29, 29)),
+          onPressed: () {
+            // Request focus for the TextFormField when the button is pressed
+            focusNode.requestFocus();
+          },
         ),
       ),
-    );
-  }
+    ),
+  );
 }

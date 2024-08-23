@@ -32,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
-          Positioned(
+          /*Positioned(
             top: 32,
             left: 8,
             child: IconButton(
@@ -41,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 onPressed: () {
                   Navigator.pop(context);
                 }),
-          ),
+          ),*/
           Positioned(
             top: 92,
             left: 20,

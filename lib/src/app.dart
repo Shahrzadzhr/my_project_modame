@@ -26,7 +26,17 @@ class App extends StatelessWidget {
       stream: context.read<AuthRepository>().authStateChanges(),
       builder: (context, snapshot) {
         final user = snapshot.data;
-        final initialRoute = user == null ? "/welcome" : "/home";
+        final String initialRoute;
+
+        if (context.read<AuthRepository>().getCurrentUser() == null) {
+          initialRoute = "/welcome";
+        } else {
+          if (context.read<AuthRepository>().isNewlyRegistered()) {
+            initialRoute = "/account";
+          } else {
+            initialRoute = "/home";
+          }
+        }
         return MaterialApp(
           key: user == null ? loginKey : homeKey,
           theme: ThemeData.light(),
