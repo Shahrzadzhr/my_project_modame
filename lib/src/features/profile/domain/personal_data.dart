@@ -1,5 +1,4 @@
 // PersonalData Class
-import 'package:flutter/foundation.dart';
 
 class PersonalData {
   final String name;
@@ -26,18 +25,6 @@ class PersonalData {
     };
   }
 
-  void main() {
-    PersonalData data = PersonalData(
-        name: "Shahrzad",
-        bodyshape: "hourglass",
-        skincolor: "beige",
-        haircolor: "dark brown",
-        height: 160);
-
-    Map<String, dynamic> map = data.toMap();
-    debugPrint("$map");
-  }
-
   factory PersonalData.fromMap(Map<String, dynamic> map) {
     return PersonalData(
       name: map["name"],
@@ -47,20 +34,6 @@ class PersonalData {
       height: map["height"],
     );
   }
-}
-
-void main() {
-  PersonalData data = PersonalData(
-      name: "Shahrzad",
-      bodyshape: "hourglass",
-      skincolor: "beige",
-      haircolor: "dark brown",
-      height: 160);
-
-  Map<String, dynamic> map = data.toMap();
-
-  PersonalData data2 = PersonalData.fromMap(map);
-  debugPrint(data2.name);
 }
 
 // Methode, um die Informationen des Benutzers als String zurückzugeben
