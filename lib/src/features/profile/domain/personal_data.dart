@@ -35,15 +35,3 @@ class PersonalData {
     );
   }
 }
-
-// Methode, um die Informationen des Benutzers als String zurückzugeben
-String getDescription() {
-  // ignore: duplicate_ignore
-  // ignore: prefer_typing_uninitialized_variables
-  var name;
-  var bodyShape;
-  var skinColor;
-  var hairColor;
-  var height;
-  return 'Name: $name, Body Shape: $bodyShape, Skin Color: $skinColor, Hair Color: $hairColor, Height: $height cm';
-}
