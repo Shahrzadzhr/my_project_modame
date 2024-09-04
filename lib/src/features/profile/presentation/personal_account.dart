@@ -46,7 +46,7 @@ class _PersonalAccountState extends State<PersonalAccount> {
         throw Exception();
       }
     } catch (e) {
-      print(e);
+      debugPrint("$e");
     }
     return null;
   }

@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
+
 enum BodyShape { rounded, triangle, hourglass, rectangle, invertedTriangle }
 
 // Clothing Recommendation Class
@@ -49,5 +51,5 @@ void main() {
   ClothingRecommendation recommendation =
       ClothingRecommendation.fromMap(recommendationAsMap);
 
-  print(recommendation.getRecommendationSummary());
+  debugPrint(recommendation.getRecommendationSummary());
 }

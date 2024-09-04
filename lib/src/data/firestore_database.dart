@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 import 'package:my_project_modame/src/data/database_repository.dart';
 import 'package:my_project_modame/src/features/profile/domain/user_profil.dart';
 
@@ -20,7 +21,7 @@ class FirestoreDatabase implements DatabaseRepository {
     final snapshot =
         await _firebaseFirestore.collection("Userprofile").doc(id).get();
     final map = snapshot.data();
-    print(map);
+    debugPrint("$map");
     if (map == null) {
       return null;
     } else {

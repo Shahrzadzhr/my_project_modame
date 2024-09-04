@@ -1,4 +1,6 @@
 // UserProfile Class
+import 'package:flutter/foundation.dart';
+
 class UserProfile {
   final String id;
   final String email;
@@ -82,12 +84,12 @@ void main() {
       phonenumber: "+4917620256596");
 
   Map<String, dynamic> map = user.toMap();
-  print(map);
+  debugPrint("$map");
 
   UserProfile user2 = UserProfile.fromMap(map);
-  print(user2.id);
-  print(user2.getFullName());
-  print(user2.getBirthDate());
-  print(user2.getPhoneNumber());
-  print(user2.getDescription());
+  debugPrint(user2.id);
+  debugPrint(user2.getFullName());
+  debugPrint(user2.getBirthDate());
+  debugPrint(user2.getPhoneNumber());
+  debugPrint(user2.getDescription());
 }
