@@ -6,17 +6,17 @@ class AuthRepository {
   // Attribute
   final FirebaseAuth _firebaseAuth;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  bool newlyRegistered = false;
+  bool _newlyRegistered = false;
 
   // Konstruktor
   AuthRepository(this._firebaseAuth);
 
   void setNewlyRegistered(bool value) {
-    newlyRegistered = value;
+    _newlyRegistered = value;
   }
 
   bool isNewlyRegistered() {
-    return newlyRegistered;
+    return _newlyRegistered;
   }
 
   User? getCurrentUser() {
