@@ -1,7 +1,3 @@
-import 'dart:convert';
-
-import 'package:flutter/foundation.dart';
-
 enum BodyShape { rounded, triangle, hourglass, rectangle, invertedTriangle }
 
 // Clothing Recommendation Class
@@ -42,14 +38,4 @@ class ClothingRecommendation {
         'Geeignet: $suitableItems\n'
         'Ungeeignet: $unsuitableItems';
   }
-}
-
-void main() {
-  String firestoreMap =
-      '''{"bodyShape": "invertedtriangle", "suitableClothes": ["weite Hose", "klein printed Blouse"], "unsuitableClothes": ["Skinny jeans", "bold printed Blouse"]}''';
-  Map<String, dynamic> recommendationAsMap = jsonDecode(firestoreMap);
-  ClothingRecommendation recommendation =
-      ClothingRecommendation.fromMap(recommendationAsMap);
-
-  debugPrint(recommendation.getRecommendationSummary());
 }
