@@ -207,7 +207,7 @@ class _PersonalAccountState extends State<PersonalAccount> {
                   child: GestureDetector(
                     onTap: () {
                       data.birthdate = birthdateController.text;
-                      data.phonenumber = phonenumberController.text;
+                      data.phoneNumber = phonenumberController.text;
                       context.read<DatabaseRepository>().updateUser(data);
                       context.read<AuthRepository>().setNewlyRegistered(false);
                       Navigator.pushNamed(context, '/start');

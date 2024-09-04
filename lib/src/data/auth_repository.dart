@@ -34,10 +34,10 @@ class AuthRepository {
           id: uid,
           email: email,
           profilePicUrl: "",
-          firstname: firstname,
-          lastname: lastname,
+          firstName: firstname,
+          lastName: lastname,
           birthdate: "",
-          phonenumber: "");
+          phoneNumber: "");
       _firestore.collection("Userprofile").doc(uid).set(user.toJson());
       return _firestore.collection('Users').doc(uid).set({
         'firstname': firstname,

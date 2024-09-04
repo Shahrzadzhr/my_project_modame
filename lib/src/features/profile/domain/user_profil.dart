@@ -4,30 +4,30 @@ class UserProfile {
   final String id;
   final String email;
   String profilePicUrl;
-  final String firstname;
-  final String lastname;
+  final String firstName;
+  final String lastName;
   String birthdate;
-  String phonenumber;
+  String phoneNumber;
 
   // Konstruktor
   UserProfile(
       {required this.id,
       required this.email,
       required this.profilePicUrl,
-      required this.firstname,
-      required this.lastname,
+      required this.firstName,
+      required this.lastName,
       required this.birthdate,
-      required this.phonenumber});
+      required this.phoneNumber});
 
   Map<String, dynamic> toMap() {
     return {
       "id": id,
       "email": email,
       "profilePicUrl": profilePicUrl,
-      "firstname": firstname,
-      "lastname": lastname,
+      "firstname": firstName,
+      "lastname": lastName,
       "birthdate": birthdate,
-      "phonenumber": phonenumber,
+      "phonenumber": phoneNumber,
     };
   }
 
@@ -36,15 +36,15 @@ class UserProfile {
       id: map["id"],
       email: map["email"],
       profilePicUrl: map["profilePicUrl"],
-      firstname: map["firstname"],
-      lastname: map["lastname"],
+      firstName: map["firstname"],
+      lastName: map["lastname"],
       birthdate: map["birthdate"],
-      phonenumber: map["phonenumber"],
+      phoneNumber: map["phonenumber"],
     );
   }
 
   String getFullName() {
-    return '$firstname  $lastname';
+    return '$firstName  $lastName';
   }
 
   String getBirthDate() {
@@ -52,7 +52,7 @@ class UserProfile {
   }
 
   String getPhoneNumber() {
-    return phonenumber;
+    return phoneNumber;
   }
 
   String getDescription() {
@@ -60,7 +60,7 @@ class UserProfile {
   }
 
   void setPhoneNumber(String phonenumber) {
-    this.phonenumber = phonenumber;
+    phoneNumber = phonenumber;
   }
 
   Map<String, dynamic> toJson() {
