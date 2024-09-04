@@ -35,7 +35,7 @@ class PersonalData {
         height: 160);
 
     Map<String, dynamic> map = data.toMap();
-    debugPrint(map);
+    debugPrint("$map");
   }
 
   factory PersonalData.fromMap(Map<String, dynamic> map) {

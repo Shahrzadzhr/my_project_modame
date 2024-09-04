@@ -229,7 +229,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           context.read<AuthRepository>().setNewlyRegistered(true);
           //Navigator.pushNamed(context, '/account');
         } catch (e) {
-          debugPrint(e);
+          debugPrint("$e");
         }
       },
       child: Container(
