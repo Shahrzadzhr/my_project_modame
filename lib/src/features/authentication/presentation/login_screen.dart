@@ -30,10 +30,10 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return loginScreenWidget(context);
+    return _loginScreenWidget(context);
   }
 
-  Widget loginScreenWidget(BuildContext context) {
+  Widget _loginScreenWidget(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
@@ -79,14 +79,14 @@ class _LoginScreenState extends State<LoginScreen> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  buildTextInput(
+                  _buildTextInput(
                       "  Username, email or mobile number", _emailController),
                   const SizedBox(height: 14),
-                  buildPasswordInput("  Password", _passwordController),
+                  _buildPasswordInput("  Password", _passwordController),
                   const SizedBox(height: 20),
-                  buildLoginButton(context),
+                  _buildLoginButton(context),
                   const SizedBox(height: 8),
-                  buildRememberMe(),
+                  _buildRememberMe(),
                   Container(
                     width: 178,
                     height: 1,
@@ -110,7 +110,7 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget buildTextInput(String label, TextEditingController controller) {
+  Widget _buildTextInput(String label, TextEditingController controller) {
     return Container(
       width: 322,
       height: 71,
@@ -137,7 +137,7 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget buildPasswordInput(String label, TextEditingController controller) {
+  Widget _buildPasswordInput(String label, TextEditingController controller) {
     return Container(
       width: 322,
       height: 71,
@@ -172,7 +172,7 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget buildLoginButton(BuildContext context) {
+  Widget _buildLoginButton(BuildContext context) {
     return GestureDetector(
       onTap: () {
         Provider.of<AuthRepository>(context, listen: false)
@@ -205,7 +205,7 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget buildRememberMe() {
+  Widget _buildRememberMe() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
