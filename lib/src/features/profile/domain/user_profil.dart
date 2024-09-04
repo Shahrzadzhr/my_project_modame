@@ -1,5 +1,4 @@
 // UserProfile Class
-import 'package:flutter/foundation.dart';
 
 class UserProfile {
   final String id;
@@ -71,25 +70,4 @@ class UserProfile {
   static UserProfile fromJson(Map<String, dynamic> json) {
     return UserProfile.fromMap(json);
   }
-}
-
-void main() {
-  UserProfile user = UserProfile(
-      id: "1",
-      email: "hallo@gmail.com",
-      profilePicUrl: "profilePicUrl",
-      firstname: "Shahrzad",
-      lastname: "Zahraei",
-      birthdate: "25.03.1988",
-      phonenumber: "+4917620256596");
-
-  Map<String, dynamic> map = user.toMap();
-  debugPrint("$map");
-
-  UserProfile user2 = UserProfile.fromMap(map);
-  debugPrint(user2.id);
-  debugPrint(user2.getFullName());
-  debugPrint(user2.getBirthDate());
-  debugPrint(user2.getPhoneNumber());
-  debugPrint(user2.getDescription());
 }
