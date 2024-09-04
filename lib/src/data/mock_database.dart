@@ -10,20 +10,20 @@ class MockDatabase implements DatabaseRepository {
       email: "test@gmail.com",
       profilePicUrl:
           'https://ca.slack-edge.com/T044YC3MSLF-U0682748V1R-3d876dea5ee3-192',
-      firstname: 'Shahrzad',
-      lastname: 'Zahraei',
+      firstName: 'Shahrzad',
+      lastName: 'Zahraei',
       birthdate: '25.03.1988',
-      phonenumber: '+49 176 202 56596',
+      phoneNumber: '+49 176 202 56596',
     ),
     UserProfile(
       id: '2',
       email: "test@gmail.com",
       profilePicUrl:
           'https://ca.slack-edge.com/T044YC3MSLF-U05GXAU2DH6-75f1f34f2c6f-72',
-      firstname: 'David',
-      lastname: 'Sent',
+      firstName: 'David',
+      lastName: 'Sent',
       birthdate: '11.11.1995',
-      phonenumber: '+49 151 301 35345',
+      phoneNumber: '+49 151 301 35345',
     ),
   ];
 

@@ -218,7 +218,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       TextEditingController controllerPassword) {
     return GestureDetector(
       onTap: () {
-        print(controllerMail.text);
+        debugPrint(controllerMail.text);
         AuthRepository authRepository = context.read<AuthRepository>();
         try {
           authRepository.signUpWithEmailAndPassword(
@@ -229,7 +229,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           context.read<AuthRepository>().setNewlyRegistered(true);
           //Navigator.pushNamed(context, '/account');
         } catch (e) {
-          print(e);
+          debugPrint("$e");
         }
       },
       child: Container(

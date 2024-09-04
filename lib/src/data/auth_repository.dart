@@ -6,17 +6,17 @@ class AuthRepository {
   // Attribute
   final FirebaseAuth _firebaseAuth;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  bool newlyRegistered = false;
+  bool _newlyRegistered = false;
 
   // Konstruktor
   AuthRepository(this._firebaseAuth);
 
   void setNewlyRegistered(bool value) {
-    newlyRegistered = value;
+    _newlyRegistered = value;
   }
 
   bool isNewlyRegistered() {
-    return newlyRegistered;
+    return _newlyRegistered;
   }
 
   User? getCurrentUser() {
@@ -25,7 +25,7 @@ class AuthRepository {
   }
 
   Future<void> signUpWithEmailAndPassword(
-      String firstname, String lastname, String email, String pw) {
+      String firstName, String lastName, String email, String pw) {
     return _firebaseAuth
         .createUserWithEmailAndPassword(email: email, password: pw)
         .then((UserCredential userCredential) {
@@ -34,14 +34,14 @@ class AuthRepository {
           id: uid,
           email: email,
           profilePicUrl: "",
-          firstname: firstname,
-          lastname: lastname,
+          firstName: firstName,
+          lastName: lastName,
           birthdate: "",
-          phonenumber: "");
+          phoneNumber: "");
       _firestore.collection("Userprofile").doc(uid).set(user.toJson());
       return _firestore.collection('Users').doc(uid).set({
-        'firstname': firstname,
-        'lastname': lastname,
+        'firstname': firstName,
+        'lastname': lastName,
         'email': email,
       });
     });
