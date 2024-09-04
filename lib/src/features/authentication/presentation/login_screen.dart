@@ -16,9 +16,9 @@ class _LoginScreenState extends State<LoginScreen> {
   bool _obscureText = true;
   @override
   void initState() {
+    super.initState();
     _emailController = TextEditingController();
     _passwordController = TextEditingController();
-    super.initState();
   }
 
   @override
