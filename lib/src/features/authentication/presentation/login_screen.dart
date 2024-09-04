@@ -11,20 +11,20 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final ValueNotifier<bool> _rememberMe = ValueNotifier(false);
-  late TextEditingController emailController;
-  late TextEditingController passwordController;
+  late TextEditingController _emailController;
+  late TextEditingController _passwordController;
   bool _obscureText = true;
   @override
   void initState() {
-    emailController = TextEditingController();
-    passwordController = TextEditingController();
+    _emailController = TextEditingController();
+    _passwordController = TextEditingController();
     super.initState();
   }
 
   @override
   void dispose() {
-    emailController.dispose();
-    passwordController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
     super.dispose();
   }
 
@@ -80,9 +80,9 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
                 children: [
                   buildTextInput(
-                      "  Username, email or mobile number", emailController),
+                      "  Username, email or mobile number", _emailController),
                   const SizedBox(height: 14),
-                  buildPasswordInput("  Password", passwordController),
+                  buildPasswordInput("  Password", _passwordController),
                   const SizedBox(height: 20),
                   buildLoginButton(context),
                   const SizedBox(height: 8),
@@ -177,8 +177,8 @@ class _LoginScreenState extends State<LoginScreen> {
       onTap: () {
         Provider.of<AuthRepository>(context, listen: false)
             .loginWithEmailAndPassword(
-          emailController.text,
-          passwordController.text,
+          _emailController.text,
+          _passwordController.text,
         );
         Navigator.pushNamed(context, '/home');
       },
