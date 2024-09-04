@@ -25,7 +25,7 @@ class AuthRepository {
   }
 
   Future<void> signUpWithEmailAndPassword(
-      String firstname, String lastname, String email, String pw) {
+      String firstName, String lastName, String email, String pw) {
     return _firebaseAuth
         .createUserWithEmailAndPassword(email: email, password: pw)
         .then((UserCredential userCredential) {
@@ -34,14 +34,14 @@ class AuthRepository {
           id: uid,
           email: email,
           profilePicUrl: "",
-          firstName: firstname,
-          lastName: lastname,
+          firstName: firstName,
+          lastName: lastName,
           birthdate: "",
           phoneNumber: "");
       _firestore.collection("Userprofile").doc(uid).set(user.toJson());
       return _firestore.collection('Users').doc(uid).set({
-        'firstname': firstname,
-        'lastname': lastname,
+        'firstname': firstName,
+        'lastname': lastName,
         'email': email,
       });
     });
